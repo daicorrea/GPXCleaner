@@ -2,12 +2,16 @@ package model;
 
 import java.sql.Date;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class Password {
 	
 	public String password;
-	
+	List<String> Dictionary = Arrays.asList("Red", "Orange", "Yellow", "Green", "Blue", "Violet", "Orange", "Blue");        
 	public Password(){
 		
 	}
@@ -78,18 +82,26 @@ public class Password {
 		}
 	}
 	
-	public boolean isDate(String password) {
+	public void isDate(String password) throws ParseException {
 		String day = password.substring(0,1);
 		String month = password.substring(2,3);
 		String year = password.substring(4,7);
-		String completeDate = day+"-"+month+"-"+year;
-		DateFormat formatter; 
-		Date date; 
-		formatter = new SimpleDateFormat("DD-MM-YYYY");
-		date = formatter.parse(completeDate);
+		String completeDate = day+"/"+month+"/"+year;
+		this.isValidDate(completeDate);   
 	}
 	
-	
-	
-
-}
+	public boolean isValidDate(String inDate) {
+    SimpleDateFormat formatter = new SimpleDateFormat("DD-MM-YYYY"); 
+    formatter.setLenient(false);
+    try {
+      formatter.parse(inDate.trim());
+    } catch (ParseException pe) {
+      return false;
+    }
+    return true;
+  } 
+        public  boolean inDictionary(String password) {
+	 boolean contains = Dictionary.contains(password);
+         return contains;
+            }
+}	
