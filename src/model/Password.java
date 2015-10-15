@@ -11,7 +11,7 @@ import java.util.List;
 public class Password {
 	
 	public String password;
-	List<String> Dictionary = Arrays.asList("Red", "Orange", "Yellow", "Green", "Blue", "Violet", "Orange", "Blue");        
+	List<String> Dictionary = Arrays.asList("Red", "Orange", "Yellow", "Green", "Blue", "Violet", "Orange", "Blue");  // Pode pegar de um repositório ou classe       
 	public Password(){
 		
 	}
@@ -29,7 +29,9 @@ public class Password {
 				if (this.hasUpper(password)) {
 					if (this.hasLower(password)) {
 						if (this.hasPunctuation(password)) {
-							return true;
+							if (this.inDictionary(password)) {
+								return true;
+							}
 						}
 					}
 				}
@@ -75,7 +77,7 @@ public class Password {
 	}
 	
 	public boolean hasPunctuation(String password){
-		if (password.matches(".*[!@#$%^&*].*")){
+		if (password.matches("(.*)[\.!\?,.;:-'\"](.*)")){
 			return true;
 		} else{
 			return false;
