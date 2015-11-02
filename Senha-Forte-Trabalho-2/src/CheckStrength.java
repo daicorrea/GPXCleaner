@@ -326,4 +326,10 @@ public class CheckStrength
 				return LEVEL.EXTREMELY_STRONG;
 		}
 	}
+	
+	public static void checkWordLevel(String passwd) 
+	{
+		System.out.println("A senha: "+ passwd + " possui forca:  " + CheckStrength.checkPasswordStrength(passwd)+" e o nivel eh: " + CheckStrength.getPasswordLevel(passwd));
+	}	
+	
 }
