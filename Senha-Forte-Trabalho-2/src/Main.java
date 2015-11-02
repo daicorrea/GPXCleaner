@@ -7,5 +7,8 @@ public class Main
 	{
 		String passwd = "2hAj5#mne-ix.86H";
 		System.out.println(CheckStrength.checkPasswordStrength(passwd));
+		
+		
+		TestPasswrd.TestPasswrds();
 	}
 }
