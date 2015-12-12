@@ -16,9 +16,9 @@ public class WriteXMLFile {
         //Adiciona o atributo id a pessoa
         pessoa.setAttribute("id","4");
         
-        //Criando os elementos de contato
+        //Criando os elementos de pessoa
         Element nome = new Element("nome");
-        nome.setText("Cesar");
+        nome.setText("Oi");
         Element sobrenome = new Element("sobrenome");
         sobrenome.setText("Luis");
         Element materia = new Element("materia");
@@ -39,7 +39,7 @@ public class WriteXMLFile {
         try {
            //Criando o arquivo de saida
            FileWriter arquivo = new FileWriter(
-              new File("C:/Users/Daiane/Documents/GitHub/password/pm/Trabalho-final/new-test.xml"));
+              new File("C:/Users/cesar/Documents/pm/Trabalho-final/new-test.xml"));
            	  System.out.println("Arquivo gerado.");
            //Imprimindo o XML no arquivo
            xout.output(documento, arquivo);
