@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/GPXCleaner/src/unirio/pm/gpxcleaner/test/ReadXMLFile.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="unirio.pm.gpxcleaner.test.ReadXMLFile"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="GPXCleaner"/>
+</launchConfiguration>

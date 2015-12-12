@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<teste>
+	<pessoa id="1">
+		<nome>Daiane</nome>
+		<sobrenome>Correa</sobrenome>
+		<materia>PM</materia>
+		<faculdade>unirio</faculdade>
+	</pessoa>
+	<pessoa id="2">
+		<nome>Felipe</nome>
+		<sobrenome>Guedes</sobrenome>
+		<materia>PM</materia>
+		<faculdade>unirio</faculdade>
+	</pessoa>
+</teste>
