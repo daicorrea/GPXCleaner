@@ -56,7 +56,5 @@ public class Trackpoint {
 		this.time = time;
 	}
 	
-	
-	
 
 }
