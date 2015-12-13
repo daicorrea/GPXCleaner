@@ -1,106 +1,61 @@
 package unirio.pm.gpx.parser;
+import unirio.pm.gpx.model.Track;
+import unirio.pm.gpx.model.TrackPoint;
+import unirio.pm.gpx.model.TrackSegment;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
+public class WriteGPX {
+	//Create XML header
+	private static final String xml_header = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>";
+	//Create GPX opening tag
+	private static final String tag_gpx = "<gpx "+ "\n" + "\t" + "creator=\"LoadMyTracks/045 http://www.cluetrust.com/LoadMyTracks.html\"" + "\n" + 
+		"\t" + "version=\"1.1\" xmlns=\"http://www.topografix.com/GPX/1/1\"" + "\n" +
+		"\t" + "xmlns:geocache=\"http://www.groundspeak.com/cache/1/0\"" + "\n" +
+		"\t" + "xmlns:gpxdata=\"http://www.cluetrust.com/XML/GPXDATA/1/0\"" + "\n" +
+		"\t" + "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " + "\n" +
+		"\t" + "xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" + "\n" +
+		"\t" + "http://www.cluetrust.com/XML/GPXDATA/1/0 http://www.cluetrust.com/Schemas/gpxdata10.xsd\">";
+	// Writes the GPX file
+	public static void gpxWriter(Track track, String targetFile)
+			throws IOException {
+		FileWriter fw = new FileWriter(new File(targetFile));
+		fw.write(xml_header + "\n");
+		fw.write(tag_gpx + "\n");
+		fw.write("\t" + "<trk>" + "\n");
+		//writes the name tag
+		fw.write("\t\t" + "<name>" + track.getName() + "</name>" + "\n");
+		//for each segment inside the track
+		for (TrackSegment trackSegment : track.getSegments()) {
+			writeTrackSegment(fw, trackSegment);
+		}
+		fw.write("\t" + "</trk>" + "\n");
+		fw.write("</gpx>");
+		fw.close();
+	}
+	
+	//Write Segments
+	public static void writeTrackSegment(FileWriter fw, TrackSegment trackSegment)
+			throws IOException {
+		fw.write("\t\t" + "<trkseg>" + "\n");
+		for (TrackPoint trackPoint : trackSegment.getTrackPoints()) {
+			writeTrackPoints(fw, trackPoint);
+		}
+		fw.write("\t\t" + "</trkseg>" + "\n");
+	}
 
-//import java.io.File;
-//import java.io.FileWriter;
-//import java.io.IOException;
-//import java.text.DecimalFormat;
-//import java.text.DecimalFormatSymbols;
-//import java.util.List;
-//import java.util.Locale;
-//
-//import org.glandais.srtm.loader.Point;
-//import org.joda.time.format.DateTimeFormatter;
-//import org.joda.time.format.ISODateTimeFormat;
-//
-//public class GPX_Writer_Test {
-//
-//	/**
-//	 * XML header.
-//	 */
-//	private static final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>";
-//
-//	/**
-//	 * GPX opening tag
-//	 */
-//	private static final String TAG_GPX = "<gpx xmlns=\"http://www.topografix.com/GPX/1/1\" "
-//			+ "creator=\"MapSource 6.16.2\" version=\"1.1\" "
-//			+ "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
-//			+ "xmlns:gpxx=\"http://www.garmin.com/xmlschemas/GpxExtensions/v3\" "
-//			+ "xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\">";
-//
-//	/**
-//	 * Date format for a point timestamp.
-//	 */
-//	private static final DateTimeFormatter POINT_DATE_FORMATTER = ISODateTimeFormat
-//			.dateHourMinuteSecondFraction();
-//	private static final DecimalFormat df = new DecimalFormat(
-//			"0.00#########################", new DecimalFormatSymbols(
-//					Locale.ENGLISH));
-//
-//	/**
-//	 * Writes the GPX file
-//	 * 
-//	 * @param trackName
-//	 *            Name of the GPX track (metadata)
-//	 * @param cTrackPoints
-//	 *            Cursor to track points.
-//	 * @param cWayPoints
-//	 *            Cursor to way points.
-//	 * @param target
-//	 *            Target GPX file
-//	 * @throws IOException
-//	 */
-//	public static void writeGpxFile(List<GPXPath> cTrackPoints, File target)
-//			throws IOException {
-//		FileWriter fw = new FileWriter(target);
-//
-//		fw.write(XML_HEADER + "\n");
-//		fw.write(TAG_GPX + "\n");
-//
-//		for (GPXPath gpxPath : cTrackPoints) {
-//			writeTrackPoints(fw, gpxPath);
-//		}
-//
-//		fw.write("</gpx>");
-//
-//		fw.close();
-//	}
-//
-//	/**
-//	 * Iterates on track points and write them.
-//	 * 
-//	 * @param trackName
-//	 *            Name of the track (metadata).
-//	 * @param fw
-//	 *            Writer to the target file.
-//	 * @param c
-//	 *            Cursor to track points.
-//	 * @throws IOException
-//	 */
-//	public static void writeTrackPoints(FileWriter fw, GPXPath gpxPath)
-//			throws IOException {
-//		fw.write("\t" + "<trk>");
-//		fw.write("\t\t" + "<name>" + gpxPath.getName() + "</name>" + "\n");
-//
-//		fw.write("\t\t" + "<trkseg>" + "\n");
-//
-//		List<Point> points = gpxPath.getPoints();
-//		for (Point point : points) {
-//			StringBuffer out = new StringBuffer();
-//			out.append("\t\t\t" + "<trkpt lat=\"" + df.format(point.getLat())
-//					+ "\" " + "lon=\"" + df.format(point.getLon()) + "\">");
-//			out.append("<ele>" + df.format(point.getZ()) + "</ele>");
-//			out.append("<time>" + POINT_DATE_FORMATTER.print(point.getTime())
-//					+ "</time>");
-//			// out.append("<extensions><gpxx:Depth>8</gpxx:Depth></extensions>");
-//			out.append("</trkpt>" + "\n");
-//			fw.write(out.toString());
-//		}
-//
-//		fw.write("\t\t" + "</trkseg>" + "\n");
-//		fw.write("\t" + "</trk>" + "\n");
-//	}
-//
-//}
-//
+	//Write trackPoints
+	public static void writeTrackPoints(FileWriter fw, TrackPoint trackPoint)
+			throws IOException {
+			StringBuffer out = new StringBuffer();
+			out.append("\t\t\t" + "<trkpt lat=\"" + trackPoint.getLatitude()
+					+ "\" " + "lon=\"" + trackPoint.getLongitude() + "\">" + "\n");
+			out.append("\t\t\t\t" + "<ele>" + trackPoint.getEle() + "</ele>" + "\n");
+			out.append("\t\t\t\t" + "<time>" + trackPoint.getTime()
+					+ "</time>" + "\n");
+			out.append("\t\t\t" + "</trkpt>" + "\n");
+			fw.write(out.toString());
+	}
+}
+
