@@ -31,9 +31,6 @@ public class distancePointLine {
 		//Finally, calculating y
 		y = a*x + b;
 		
-		//Calculate distance 
-		
-		
 	}
 	
 }
