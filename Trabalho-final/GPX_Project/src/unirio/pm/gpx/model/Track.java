@@ -5,9 +5,9 @@ public class Track {
 	
 	private Integer id;
 	private String name;
-	private ArrayList<TrackSegments> segments;
+	private ArrayList<TrackSegment> segments;
 	
-	public Track(Integer id, String name, ArrayList<TrackSegments> segments) {
+	public Track(Integer id, String name, ArrayList<TrackSegment> segments) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -34,11 +34,11 @@ public class Track {
 		this.name = name;
 	}
 
-	public ArrayList<TrackSegments> getSegments() {
+	public ArrayList<TrackSegment> getSegments() {
 		return segments;
 	}
 
-	public void setSegments(ArrayList<TrackSegments> segments) {
+	public void setSegments(ArrayList<TrackSegment> segments) {
 		this.segments = segments;
 	}
 	

@@ -1,11 +1,9 @@
 package unirio.pm.gpx.view;
-import unirio.pm.gpx.parser.gpxParser;
-//import java.io.Writer;
+import unirio.pm.gpx.parser.ReadGPX;
 
 public class Main {
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		gpxParser reader = new gpxParser();
+		ReadGPX reader = new ReadGPX();
 		reader.gpxReader("../GPX_Project/src/unirio/pm/gpx/file/Century-2007-02-18.gpx");
 	}
 }
