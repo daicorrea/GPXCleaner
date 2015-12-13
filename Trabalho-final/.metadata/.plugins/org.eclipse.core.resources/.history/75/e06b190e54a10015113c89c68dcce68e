@@ -1,0 +1,12 @@
+
+
+public class distancePointLine {
+
+	
+	public Double calculateDistance (){
+		
+		Double y, a, x, b; // a = slope   b = y-intercept  (y = ax + b) equation of a line
+		
+	}
+	
+}
