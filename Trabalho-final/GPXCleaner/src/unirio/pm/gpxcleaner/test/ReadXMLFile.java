@@ -5,45 +5,44 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
-
-import com.fmt.gps.track.TrackPoint;
 
 public class ReadXMLFile {
  
 	public static void ReadXML() {
       Document document = null;
+      Document document2 = null;
       SAXBuilder builder = new SAXBuilder();
       try {
-         document = builder.build("C:/Users/cesar/Documents/pm/Trabalho-final/Century-2007-02-18.gpx");
+         document = builder.build("C:/Users/cesar/Documents/pm/Trabalho-final/test.xml");
       } catch (Exception e) {
          e.printStackTrace();
       }
-      Element trk = document.getRootElement();
-      List list = trk.getChildren("trkseg");
       
+      try {
+          document2 = builder.build("C:/Users/cesar/Documents/pm/Trabalho-final/Century-2007-02-18.gpx");
+       } catch (Exception e) {
+          e.printStackTrace();
+       }
+      
+      
+      Element teste = document.getRootElement();
+ 
+      List list = teste.getChildren("pessoa");
+    //  tamanhho da lista
+     System.out.println("teste: " + list.size());
+      
+    
+     Element trk = document2.getRootElement();
+         List list2 = trk.getChildren("trkseg");
+       //  tamanhho da lista
+        System.out.println("trkseg: " + list2.size());
+         
+     
+     
       for (int i = 0; i < list.size(); i++) {
     	  Element node = (Element) list.get(i);
-    	 // System.out.println("trackpoint: " + node.getChildText("trkpt"));
-    	  System.out.println("ele: " + node.getChildText("ele"));
-    	  System.out.println("time: " + node.getChildText("time"));
-    	//  System.out.println("faculdade: " + node.getChildText("faculdade"));
+    	 // System.out.println("ele: " + node.getChildText("ele"));
+    	//  System.out.println("time: " + node.getChildText("time"));
       }    
 	}
 }
