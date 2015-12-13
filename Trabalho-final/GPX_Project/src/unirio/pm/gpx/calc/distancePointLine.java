@@ -1,10 +1,10 @@
 package unirio.pm.gpx.calc;
-import unirio.pm.gpx.model.Trackpoint;
+import unirio.pm.gpx.model.TrackPoint;
 
 public class distancePointLine {
 
 	
-	public void calculateDistance (Trackpoint current, Trackpoint previous, Trackpoint next){
+	public void calculateDistance (TrackPoint current, TrackPoint previous, TrackPoint next){
 		
 		Double y, a, c, x, b; // a = slope   b = y-intercept  (y = ax + b) equation of a line
 		

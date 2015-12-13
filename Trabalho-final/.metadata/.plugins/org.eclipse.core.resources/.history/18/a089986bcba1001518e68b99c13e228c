@@ -1,0 +1,8 @@
+package unirio.pm.gpx.model;
+import java.util.*;
+
+public class Track {
+	private String name;
+	private ArrayList<TrackSegments> segments;
+
+}

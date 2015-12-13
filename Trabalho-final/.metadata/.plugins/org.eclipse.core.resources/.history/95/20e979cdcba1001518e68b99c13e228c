@@ -1,0 +1,5 @@
+package unirio.pm.gpx.model;
+
+public class TrackSegments {
+
+}

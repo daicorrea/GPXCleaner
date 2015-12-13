@@ -3,7 +3,7 @@ import java.io.File;
 import java.util.List;
 
 import parserPackage.*;
-import unirio.pm.gpx.model.Trackpoint;
+import unirio.pm.gpx.model.TrackPoint;
 
 import javax.xml.bind.*;
 
@@ -25,7 +25,7 @@ public class gpxParser{
 		}
 		//Gets the Node TRK (root)
 		List<TrkType> trkList = gpx.getTrk(); 
-		double i = 0;
+		Integer i = 0;
 		//For each of the list to read its elements (referring to the root node TRK)
 		for (TrkType trk : trkList) { 
 			//Second in the hierarchy comes the "trkseg" node 
@@ -34,7 +34,7 @@ public class gpxParser{
 				for (WptType trkpt : trkseg.getTrkpt()){
 					System.out.println("longitude = " + trkpt.getLon());
 					System.out.println("latitude = " + trkpt.getLat());
-					 Trackpoint trackpoint = new Trackpoint(i,trkpt.getLat().doubleValue(),trkpt.getLon().doubleValue(),trkpt.getEle().doubleValue(),trkpt.getTime().toString());
+					 TrackPoint trackpoint = new TrackPoint(i,trkpt.getLat().doubleValue(),trkpt.getLon().doubleValue(),trkpt.getEle().doubleValue(),trkpt.getTime().toString());
 					 i++;
 					 
 				}
