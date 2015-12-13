@@ -22,11 +22,11 @@ public class distancePointLine {
 		
 		b = (next.getLatitude()) - (a * next.getLongitude());
 		
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		c = (a * current.getLongitude()) + current.getLatitude();
 		
-=======
->>>>>>> origin/master
+//=======
+//>>>>>>> origin/master
 		
 		//Calculating x
 		x = (c - b) / (2 * a);
