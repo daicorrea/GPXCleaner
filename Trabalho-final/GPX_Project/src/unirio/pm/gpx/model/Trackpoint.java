@@ -1,50 +1,50 @@
 package unirio.pm.gpx.model;
 
 public class Trackpoint {
-	private float id;
-	private float lat;
-	private float lon;
-	private float ele;
+	private double id;
+	private double latitude;
+	private double longitude;
+	private double ele;
 	private String time;
 	
-	public Trackpoint(float id, float lat, float lon, float ele, String time) {
+	public Trackpoint(double id, double latitude, double longitude, double ele, String time) {
 		super();
 		this.id = id;
-		this.lat = lat;
-		this.lon = lon;
+		this.latitude = latitude;
+		this.longitude = longitude;
 		this.ele = ele;
 		this.time = time;
 	}
 
-	public float getId() {
+	public double getId() {
 		return id;
 	}
 
-	public void setId(float id) {
+	public void setId(double id) {
 		this.id = id;
 	}
 
-	public float getLat() {
-		return lat;
+	public double getLatitude() {
+		return latitude;
 	}
 
-	public void setLat(float lat) {
-		this.lat = lat;
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
 	}
 
-	public float getLon() {
-		return lon;
+	public double getLongitude() {
+		return longitude;
 	}
 
-	public void setLon(float lon) {
-		this.lon = lon;
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 
-	public float getEle() {
+	public double getEle() {
 		return ele;
 	}
 
-	public void setEle(float ele) {
+	public void setEle(double ele) {
 		this.ele = ele;
 	}
 
