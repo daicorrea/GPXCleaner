@@ -4,7 +4,7 @@ import unirio.pm.gpx.model.Trackpoint;
 public class distancePointLine {
 
 	
-	public Double calculateDistance (Trackpoint current, Trackpoint previous, Trackpoint next){
+	public void calculateDistance (Trackpoint current, Trackpoint previous, Trackpoint next){
 		
 		Double y, a, c, x, b; // a = slope   b = y-intercept  (y = ax + b) equation of a line
 		
@@ -22,8 +22,11 @@ public class distancePointLine {
 		
 		b = (next.getLatitude()) - (a * next.getLongitude());
 		
+<<<<<<< HEAD
 		c = (a * current.getLongitude()) + current.getLatitude();
 		
+=======
+>>>>>>> origin/master
 		
 		//Calculating x
 		x = (c - b) / (2 * a);
