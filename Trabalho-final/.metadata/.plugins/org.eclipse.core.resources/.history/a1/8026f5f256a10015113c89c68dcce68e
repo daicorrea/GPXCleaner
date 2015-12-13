@@ -1,4 +1,3 @@
-import unirio.pm.gpx.model.Trackpoint;
 
 
 public class distancePointLine {
@@ -21,9 +20,6 @@ public class distancePointLine {
 		//Formula: b = y - ax 
 		
 		b = (next.getLatitude()) - (a * next.getLongitude());
-		
-		c = (a * current.getLongitude()) + current.getLatitude();
-		
 		
 		//Calculating x
 		x = (c - b) / (2 * a);
