@@ -1,3 +1,5 @@
+import java.io.Writer;
+
 
 
 public class Main {
@@ -7,6 +9,7 @@ public class Main {
 		gpxParser reader = new gpxParser();
 		
 		reader.gpxReader("Century-2007-02-18.gpx");
+		
 
 	}
 
