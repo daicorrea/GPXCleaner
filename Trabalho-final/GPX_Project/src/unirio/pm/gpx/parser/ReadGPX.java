@@ -53,7 +53,7 @@ public class ReadGPX{
 					//adding the new trackpoint to the list for the segments
 					trackPoints.add(trackPoint);
 				}
-				TrackSegment trackSegment = new TrackSegment(trackSegID, trackPoints);
+				TrackSegment trackSegment = new TrackSegment(trackPoints);
 				segments.add(trackSegment);
 			}
 			track = new Track(trackID,trk.getName(),segments);

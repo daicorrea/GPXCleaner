@@ -2,7 +2,7 @@ package unirio.pm.gpx.calc;
 import unirio.pm.gpx.model.TrackPoint;
 import java.lang.Math;
 
-public class DistancePointLine {
+public class distancePointLine {
 	public float calculateDistance (TrackPoint current, TrackPoint previous, TrackPoint next){
 		//current = current trackpoint 
 		//previous = previous trackpoint
