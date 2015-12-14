@@ -1,12 +1,14 @@
 package unirio.pm.gpx.model;
 
+import java.util.Comparator;
+
 public class TrackPoint {
 	private Integer id;
 	private float latitude;
 	private float longitude;
 	private float ele;
 	private String time;
-	private float distanceAdjLine;
+	private double distanceAdjLine;
 	
 	public TrackPoint(Integer id, float latitude, float longitude, float ele, String time) {
 		super();
@@ -61,11 +63,32 @@ public class TrackPoint {
 		this.time = time;
 	}
 
-	public float getDistanceAdjLine() {
+	public double getDistanceAdjLine() {
 		return distanceAdjLine;
 	}
 
-	public void setDistanceAdjLine(float distanceAdjLine) {
+	public void setDistanceAdjLine(double distanceAdjLine) {
 		this.distanceAdjLine = distanceAdjLine;
+	}
+	
+	
+	public static Comparator<TrackPoint> getComparatorDate() {
+		return new Comparator<TrackPoint>() {
+			@Override
+			public int compare(TrackPoint point1, TrackPoint point2) {
+				return point1.getTime().compareTo(point2.getTime());
+			}
+		};
+	}
+
+	public static Comparator<TrackPoint> getComparatorDistance() {
+		return new Comparator<TrackPoint>() {
+			@Override
+			public int compare(TrackPoint point1, TrackPoint point2) {
+				return (Double.toString(point1.getDistanceAdjLine())).compareTo((Double.toString(point2.getDistanceAdjLine())));
+			}
+		};
+	
+	
 	}
 }

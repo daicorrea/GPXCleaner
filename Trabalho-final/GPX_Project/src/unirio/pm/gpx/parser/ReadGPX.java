@@ -2,9 +2,12 @@ package unirio.pm.gpx.parser;
 import unirio.pm.gpx.model.Track;
 import unirio.pm.gpx.model.TrackPoint;
 import unirio.pm.gpx.model.TrackSegment;
+
 import java.io.File;
 import java.util.*;
+
 import parserPackage.*;
+
 import javax.xml.bind.*;
 
 //Creat class for parsing the GPX file
@@ -14,6 +17,7 @@ public class ReadGPX{
 	private Integer trackSegID;
 	private Integer trackPointID;
 	//Receives a .gpx file and reads its elements
+	@SuppressWarnings("unchecked")
 	public Track gpxReader(String file){
 		Track track = null;
 		trackID = 0;
