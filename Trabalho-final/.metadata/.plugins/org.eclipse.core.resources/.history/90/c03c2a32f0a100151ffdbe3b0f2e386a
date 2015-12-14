@@ -47,8 +47,8 @@ public class ReadGPX{
 					trackPointID = trackPointID++;
 					System.out.println("longitude = " + trkpt.getLon());
 					System.out.println("latitude = " + trkpt.getLat());
-					TrackPoint trackPoint = new TrackPoint(trackPointID,trkpt.getLat().floatValue(),
-							trkpt.getLon().floatValue(),trkpt.getEle().floatValue(),
+					TrackPoint trackPoint = new TrackPoint(trackPointID,trkpt.getLat().doubleValue(),
+							trkpt.getLon().doubleValue(),trkpt.getEle().doubleValue(),
 							trkpt.getTime().toString());
 					//adding the new trackpoint to the list for the segments
 					trackPoints.add(trackPoint);
