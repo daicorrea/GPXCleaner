@@ -60,4 +60,5 @@ public class TrackPoint {
 		this.time = time;
 	}
 	
+	}
 }
