@@ -6,6 +6,7 @@ public class TrackPoint {
 	private float longitude;
 	private float ele;
 	private String time;
+	private float distanceAdjLine;
 	
 	public TrackPoint(Integer id, float latitude, float longitude, float ele, String time) {
 		super();
@@ -20,7 +21,7 @@ public class TrackPoint {
 		super();
 	}
 
-	public double getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -28,7 +29,7 @@ public class TrackPoint {
 		this.id = id;
 	}
 
-	public double getLatitude() {
+	public float getLatitude() {
 		return latitude;
 	}
 
@@ -36,7 +37,7 @@ public class TrackPoint {
 		this.latitude = latitude;
 	}
 
-	public double getLongitude() {
+	public float getLongitude() {
 		return longitude;
 	}
 
@@ -44,7 +45,7 @@ public class TrackPoint {
 		this.longitude = longitude;
 	}
 
-	public double getEle() {
+	public float getEle() {
 		return ele;
 	}
 
@@ -59,6 +60,12 @@ public class TrackPoint {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	
+
+	public float getDistanceAdjLine() {
+		return distanceAdjLine;
+	}
+
+	public void setDistanceAdjLine(float distanceAdjLine) {
+		this.distanceAdjLine = distanceAdjLine;
 	}
 }
