@@ -1,12 +1,11 @@
-package unirio.pm.gpx.calc;
-import unirio.pm.gpx.model.TrackPoint;
 
 public class DistanceCalculator {
 	
-	public float getDistance(TrackPoint current, TrackPoint previous, TrackPoint next){
-		//if primeiro ou ultimo n fazer isso
-		//TrackPoint previous = current.indexOf()
-		//TrackPoint next = current.getNext();
+	public float getDistance(TrackPoint current){
+		
+		TrackPoint previous = current.getPrevious();
+		TrackPoint next = current.getNext();
+		
 		
 		float x1 = previous.getLongitude(); //x1 = longitude of previous point
 		float y1 = previous.getLatitude(); //y1 = latitude of previous point

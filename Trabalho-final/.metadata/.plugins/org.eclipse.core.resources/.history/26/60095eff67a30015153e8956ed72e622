@@ -70,5 +70,25 @@ public class TrackPoint {
 	public void setDistanceAdjLine(double distanceAdjLine) {
 		this.distanceAdjLine = distanceAdjLine;
 	}
+	
+	
+	public static Comparator<TrackPoint> getComparatorDate() {
+		return new Comparator<TrackPoint>() {
+			@Override
+			public int compare(TrackPoint point1, TrackPoint point2) {
+				return point1.getTime().compareTo(point2.getTime());
+			}
+		};
+	}
 
+	public static Comparator<TrackPoint> getComparatorDistance() {
+		return new Comparator<TrackPoint>() {
+			@Override
+			public int compare(TrackPoint point1, TrackPoint point2) {
+				return (Double.toString(point1.getDistanceAdjLine())).compareTo((Double.toString(point2.getDistanceAdjLine())));
+			}
+		};
+	
+	
+	}
 }

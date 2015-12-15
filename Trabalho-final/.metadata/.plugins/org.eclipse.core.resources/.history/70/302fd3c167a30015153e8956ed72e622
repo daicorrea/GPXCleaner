@@ -7,12 +7,12 @@ import unirio.pm.gpx.model.TrackSegment;
 
 
 public class TrackpointsReducer {
-/*
+
 	public Track reducePointsBy1M(TrackPoint current){
 		
 		
 		
 		
 	}
-	*/
+	
 }
