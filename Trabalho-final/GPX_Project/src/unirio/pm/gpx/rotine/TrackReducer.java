@@ -3,6 +3,10 @@ package unirio.pm.gpx.rotine;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 import unirio.pm.gpx.model.Track;
 import unirio.pm.gpx.model.TrackPoint;
 import unirio.pm.gpx.parser.ReadGPX;
@@ -14,7 +18,7 @@ import unirio.pm.gpx.rotine.TrackPointToTrack;
 
 public class TrackReducer {
 	
-	static public void remover() throws IOException{
+	static public void remover() throws IOException, ParserConfigurationException, SAXException{
 		
 		//Creating object lists
 		ArrayList<Track> trackList = new ArrayList<Track>();
@@ -23,7 +27,8 @@ public class TrackReducer {
 		//ReadGPX reader = new ReadGPX();
 		newReadGPX reader = new newReadGPX();
 		//trackList = reader.gpxReader("../GPX_ProjectDaiane/src/unirio/pm/gpx/file/foxboro.gpx");
-				reader.ReadXML();
+		trackList = newReadGPX.ReadGPX("../GPX_Project/src/unirio/pm/gpx/file/foxboro.gpx");
+		//newReadGPX.ReadGPX("../GPX_ProjectDaiane/src/unirio/pm/gpx/file/foxboro.gpx");
 		//Verify if the list is empty
 //		if(!emptyList(trackList)){
 //			System.out.println("There was an error while reading the file. Please verify it and try again later.");

@@ -2,104 +2,102 @@ package unirio.pm.gpx.parser;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import unirio.pm.gpx.model.Track;
 import unirio.pm.gpx.model.TrackPoint;
 import unirio.pm.gpx.model.TrackSegment;
 
+//Create class for parsing the GPX file
 public class newReadGPX {
-	static public void ReadXML() throws IOException{
-	try {
-
-		File fXmlFile = new File("../GPX_Project/src/unirio/pm/gpx/file/Century-2007-09-01.gpx");
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		Document doc = dBuilder.parse(fXmlFile);
-
-		//optional, but recommended
-		//read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
-		doc.getDocumentElement().normalize();
-
-		//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-		//Puts the file on the gpx variable
 	
+	//Receives a .gpx file and reads its elements
+	public static ArrayList<Track> ReadGPX(String file) throws IOException, ParserConfigurationException, SAXException {
 		
-		//Gets the Node TRK (root)
-	//gpx =  
-		
-		NodeList nListTrkpt = doc.getElementsByTagName("trkpt");
-		NodeList nListTrk = doc.getElementsByTagName("trk");
-		NodeList nListTrkseg = doc.getElementsByTagName("trkseg");
-		
-		System.out.println("tamanho Trkpt : " +nListTrkpt.getLength());
-		System.out.println("tamanho Trkseg : " +nListTrkseg.getLength());
-		
-		
-		Node nNode2 = nListTrk.item(0);
-		Element eElement2 = (Element) nNode2;
-		String name = eElement2.getElementsByTagName("name").item(0).getTextContent();
-		
-		ArrayList<TrackSegment> TrackSegmentList = new ArrayList<TrackSegment>();
-		
-		ArrayList<TrackPoint> TrackPointlist = new ArrayList<TrackPoint>();
-		//TrackSegment trackSegment = new TrackSegment(TrackPointlist);
-		//TrackSegment trackSegment;
-		
-	for (int temp = 0; temp < nListTrk.getLength(); temp++) {
-	for (int temp3 = 0; temp3 < nListTrkseg.getLength(); temp3++) {
-		for (int temp2 = 0; temp2 < nListTrkpt.getLength(); temp2++) {
-			Node nNode = nListTrkpt.item(temp);
+	
+			File GPXFile = new File(file);
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(GPXFile);
+	
+			//optional, but recommended
+			//read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+			doc.getDocumentElement().normalize();
 			
-		//System.out.println("\nCurrent Element :" + nNode.getNodeName());
-			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-				Element eElement = (Element) nNode;
-		
-		System.out.println("latitude : " + eElement.getAttribute("lat"));
-		System.out.println("longitude : " + eElement.getAttribute("lon"));
-		System.out.println("Element : " + eElement.getElementsByTagName("ele").item(0).getTextContent());
-		System.out.println("Time : " + eElement.getElementsByTagName("time").item(0).getTextContent());
 			
-		
-				String latitude 	= eElement.getAttribute("lat");
-				String longitude 	= eElement.getAttribute("lon");
-				String ele 			= eElement.getElementsByTagName("ele").item(0).getTextContent();
-				String time 		= eElement.getElementsByTagName("time").item(0).getTextContent();	
-		
-				TrackPoint trackpoint = new TrackPoint(Float.valueOf(latitude),Float.valueOf(longitude),Float.valueOf(ele),time);	
-				TrackPointlist.add(trackpoint);
-		//System.out.println("Estamos no segundo for : "+ TrackPointlist.get(temp2).getLatitude()); 
-		//System.out.println("Estamos no segundo for 2 : " + TrackPointlist.get(temp2).getEle());
+			//Creating a new Track List
+			ArrayList<Track> trackList = new ArrayList<Track>();
+	
+			//System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+			
+			//List Tracks
+			NodeList nListTrk = doc.getElementsByTagName("trk");
+			int trackListSize = nListTrk.getLength();
+			
+			//For each of the list to read its elements
+			for(int i = 0; i < trackListSize; i++) { 
+				//get the Track name
+				Node nNodeTrk = nListTrk.item(i);
+				Element elementTrk = (Element) nNodeTrk;
+				String trkName = elementTrk.getElementsByTagName("name").item(i).getTextContent();
+				System.out.println("NAME: " +trkName);
+				
+				//get TrackSegment List
+				NodeList nListTrkseg = doc.getElementsByTagName("trkseg");
+				int trackSegmentListSize = nListTrkseg.getLength();
+				ArrayList<TrackSegment> TrackSegmentList = new ArrayList<TrackSegment>();
+
+				//Second in the hierarchy comes the "trkseg" node 
+				for(int j = 0; j < trackSegmentListSize; j++){ 
+					Element trackSeg = (Element) nListTrkseg.item(j);
+					
+					//Getting TrackPoints
+					NodeList nListTrkpt = trackSeg.getElementsByTagName("trkpt");
+					int trackPointListSize = nListTrkpt.getLength();
+					ArrayList<TrackPoint> TrackPointlist = new ArrayList<TrackPoint>();
+					
+					for(int k = 0; k < trackPointListSize; k++) { 
+						Node nNode = nListTrkpt.item(i);
+						
+						if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+							Element eElement = (Element) nNode;
+							
+							String latitude = eElement.getAttribute("lat");
+							String longitude = eElement.getAttribute("lon");
+							String ele = eElement.getElementsByTagName("ele").item(i).getTextContent();
+							String time	= eElement.getElementsByTagName("time").item(i).getTextContent();	
+							
+							System.out.println("latitude: " + latitude);
+							//Creating new TrackPoing
+							TrackPoint trackpoint = new TrackPoint(Float.valueOf(latitude),Float.valueOf(longitude),Float.valueOf(ele),time);	
+							TrackPointlist.add(trackpoint);
+							
+						}
+						
+					}
+					//Creating new TrackSegment
+					TrackSegment trackSegment = new TrackSegment(TrackPointlist);
+					TrackSegmentList.add(trackSegment);
+				}
+				
+				//Creating new track
+				Track track = new Track(trkName,TrackSegmentList);
+				trackList.add(track);
+				
 			}
-		}
+			return trackList;
+			
 		
-		
-		TrackSegment trackSegment = new TrackSegment(TrackPointlist);
-		TrackSegmentList.add(trackSegment);
-	}
-	
 	}	
-		System.out.println("Estamos no primeiro for  : " + TrackSegmentList.get(0).getTrackPoints().get(2).getLatitude());
-		
-		Track Track = new Track(name,TrackSegmentList);
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-		
-
 	
-}	
 }
