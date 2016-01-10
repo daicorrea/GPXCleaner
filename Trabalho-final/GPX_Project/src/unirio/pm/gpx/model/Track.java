@@ -10,6 +10,7 @@ public class Track {
 	//Track Segment List
 	private ArrayList<TrackSegment> segments;
 	
+	//Constructor with fields
 	public Track(String name, ArrayList<TrackSegment> segments) {
 		super();
 		this.name = name;
@@ -19,7 +20,8 @@ public class Track {
 	public Track() {
 		super();
 	}
-
+	
+	//Getters and Setters
 	public String getName() {
 		return name;
 	}
@@ -35,21 +37,31 @@ public class Track {
 	public void setSegments(ArrayList<TrackSegment> segments) {
 		this.segments = segments;
 	}
-	
+
+	//Counter to how many TrackPoint has the Track
 	public int countTrackPoints() {
+		
+		//Object to count the total
 		int trackPointTotal = 0;
+		
+		//Object to count the total of TrackPoints from each TrackSegment
+		int segmentTrackPoints = 0;
+		
 		System.out.println("CONTANDOOOO");
+		
+		//Creating a loop for each TrackSegment in the Track
 		for (TrackSegment trackSegment : this.getSegments()){
-			for (TrackPoint trackPoint : trackSegment.getTrackPoints()){
-				trackPointTotal++;
-			}
+			
+			//Getting the total by using the function size
+			segmentTrackPoints = trackSegment.getTrackPoints().size();
+			
+			//Summing the size
+			trackPointTotal = trackPointTotal + segmentTrackPoints;
 		}
+		
 		System.out.println(trackPointTotal);
 		return trackPointTotal;
+		
 	}
-	
-	public void addSegmentToTrack(TrackSegment trackSegment) {
-		this.segments.add(trackSegment);
-	}
-	
+		
 }

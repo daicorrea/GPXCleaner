@@ -21,7 +21,7 @@ public class TrackPointListFromTrack {
 				//Creating a loop to get into each TrackPoint
 				for (TrackPoint trackPoint : trackSegment.getTrackPoints()){
 					
-					//Getting the sum
+					//Getting the TrackPoint sum
 					trackPointTotal++;
 					
 					//Creating a new TrackPoint

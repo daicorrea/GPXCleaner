@@ -13,7 +13,8 @@ public class WriteGPX {
 	private static final String xml_header = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>";
 	
 	//Create GPX opening tag
-	private static final String tag_gpx = "<gpx "+ "\n" + "\t" + "creator=\"LoadMyTracks/045 http://www.cluetrust.com/LoadMyTracks.html\"" + "\n" + 
+	private static final String tag_gpx = "<gpx "+ "\n" + 
+		"\t" + "creator=\"LoadMyTracks/045 http://www.cluetrust.com/LoadMyTracks.html\"" + "\n" + 
 		"\t" + "version=\"1.1\" xmlns=\"http://www.topografix.com/GPX/1/1\"" + "\n" +
 		"\t" + "xmlns:geocache=\"http://www.groundspeak.com/cache/1/0\"" + "\n" +
 		"\t" + "xmlns:gpxdata=\"http://www.cluetrust.com/XML/GPXDATA/1/0\"" + "\n" +
@@ -25,6 +26,11 @@ public class WriteGPX {
 	public static void gpxWriter(ArrayList<Track> trackList, String targetFile)
 			throws IOException {
 		
+
+		for (Track track : trackList) { 
+			System.out.println("CONTANDO DENTRO DO WRITE: " + track.countTrackPoints());
+		}
+		
 		FileWriter fw = new FileWriter(new File(targetFile));
 		fw.write(xml_header + "\n");
 		fw.write(tag_gpx + "\n");
@@ -32,10 +38,10 @@ public class WriteGPX {
 		for (Track track : trackList) {
 			fw.write("\t" + "<trk>" + "\n");
 			
-			//writes the name tag
+			//Writes the name tag
 			fw.write("\t\t" + "<name>" + track.getName() + "</name>" + "\n");
 			
-			//for each segment inside the track
+			//For each segment inside the track
 			for (TrackSegment trackSegment : track.getSegments()) {
 				writeTrackSegment(fw, trackSegment);
 			}
