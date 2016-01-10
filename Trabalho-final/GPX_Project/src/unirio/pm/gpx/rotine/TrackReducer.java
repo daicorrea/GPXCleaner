@@ -39,7 +39,7 @@ public class TrackReducer {
 			trackPointList = TrackPointListFromTrack.getTrackPointList(track);
 			
 			//Reduce TrackPoints
-			TrackpointsReducer.reducePointsByMeters(trackList, 250.0);
+			trackPointList = TrackpointsReducer.reducePointsByMeters(trackPointList, 250.0);
 			
 			//Count the TrackPoints from the track after reducing
 			track.countTrackPoints();
