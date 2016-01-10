@@ -13,40 +13,40 @@ public class TrackPointReducer {
 		//Creating objects
 		TrackPoint previous = null;
 		TrackPoint next = null;
-		
-		ArrayList<TrackPoint> newList = new ArrayList<TrackPoint>();
+		ArrayList<TrackPoint> newTrackPointList = new ArrayList<TrackPoint>();
 		double d = 0;
 		int i = 0;
 		int ni = 0;
 		int TrackPointListSize = trackPointList.size();
-		
 		System.out.println("tamanho da lista : " + TrackPointListSize);
-		//Loop for TrackPoint List
+		
+		//Creating Loop for TrackPoint List
 		for (TrackPoint trackPoint : trackPointList) {
 			System.out.println("tamanho : " + i);
 			
+			//Verifying if the list is empty
 			if(!emptyList(trackPointList)) {
+				
 				System.out.println("empty? : " + i);
-				//it can't be the first or the last trackpoint from the list
+				
+				//For the calc, the TrackPoint can't be the first or the last on the list
 				if((i!=0)&&(i!=TrackPointListSize-1)) {
 					
-					//previous = trackSegment.getTrackPoints().get(i-1);
+					//Get the previous and the next TrackPoint
 					previous = trackPointList.get(i-1);
-						//System.out.println("previous: ");
-						//System.out.println(previous);
-						//next = trackSegment.getTrackPoints().get(i+1);
 					next = trackPointList.get(i+1);
-						//System.out.println("next: ");
-						//System.out.println(next);
-						//System.out.println("current:"+ trackPoint);
+					
+					//Calculating the distance from the TrackPoints
 					d = DistanceCalculator.getDistance(trackPoint, previous, next);
 					System.out.println("d retornado: " + d);
-						//System.out.println("metros: " + meters);
 					System.out.println((d > meters));
+					
+					//Verifying if the calculated distance is bigger than the desired one
 					if(d > meters) {
-						//remove the trackpoint from the list
 						System.out.println("adicionou um!!");
-						newList.add(trackPoint);
+						
+						//Adding to the new TrackPoint list
+						newTrackPointList.add(trackPoint);
 						ni++;
 					}
 					
@@ -55,8 +55,9 @@ public class TrackPointReducer {
 				System.out.println("aumentando i : " + i);
 			}
 		}
+		
 		System.out.println("ni : " + ni);
-		return newList;
+		return newTrackPointList;
 		
 	}
 	

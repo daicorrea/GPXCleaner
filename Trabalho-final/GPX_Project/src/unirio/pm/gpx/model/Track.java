@@ -48,4 +48,8 @@ public class Track {
 		return trackPointTotal;
 	}
 	
+	public void addSegmentToTrack(TrackSegment trackSegment) {
+		this.segments.add(trackSegment);
+	}
+	
 }

@@ -9,6 +9,7 @@ import unirio.pm.gpx.parser.ReadGPX;
 import unirio.pm.gpx.parser.WriteGPX;
 import unirio.pm.gpx.rotine.TrackPointListFromTrack;
 import unirio.pm.gpx.calc.TrackPointReducer;
+import unirio.pm.gpx.rotine.TrackPointToTrack;
 
 public class TrackReducer {
 	
@@ -35,19 +36,19 @@ public class TrackReducer {
 			//Count the TrackPoints from the Track before reducing
 			track.countTrackPoints();
 			
-			//Get all the TrackPoints from each Track
+			//Get all the TrackPoints from the Track
 			trackPointList = TrackPointListFromTrack.getTrackPointList(track);
 			
 			//Reduce TrackPoints
 			trackPointList = TrackPointReducer.reducePointsByMeters(trackPointList, 12.0);
 			
+			//Put the TrackPoints back to the Track
+			track =  TrackPointToTrack.addingTrackPointsToTrack(track.getName(), trackPointList);
+			
 			//Count the TrackPoints from the track after reducing
 			track.countTrackPoints();
 		}
-		//trackPointReducer.reducePointsByMeters(trackList, 250.0);
-		for (Track track : trackList) { 
-			track.countTrackPoints();
-		}
+		
 		
 		//Write the new GPX File
 		WriteGPX.gpxWriter(trackList, "../GPX_Project/src/unirio/pm/gpx/file/NewFileCentury-2007-02-18-teste_sem_id.gpx");
