@@ -47,6 +47,8 @@ public class Track {
 		//Object to count the total of TrackPoints from each TrackSegment
 		int segmentTrackPoints = 0;
 		
+		System.out.println("CONTANDOOOO");
+		
 		//Creating a loop for each TrackSegment in the Track
 		for (TrackSegment trackSegment : this.getSegments()){
 			

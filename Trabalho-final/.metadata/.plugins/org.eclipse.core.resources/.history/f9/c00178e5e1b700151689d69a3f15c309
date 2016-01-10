@@ -16,25 +16,26 @@ import unirio.pm.gpx.rotine.TrackPointToTrack;
 
 public class TrackReducer {
 	
-	static public void remover(String sourceFile, String destinationFile, String toReduce) throws IOException, ParserConfigurationException, SAXException{
+	static public void remover() throws IOException, ParserConfigurationException, SAXException{
 		
 		//Creating object lists
 		ArrayList<Track> trackList = new ArrayList<Track>();
 		
 		//Read GPX File
-		trackList = GPXReader.ReadGPX(sourceFile);
+		trackList = GPXReader.ReadGPX("../GPX_Project/src/unirio/pm/gpx/file/foxboro.gpx");
 		
 		//Verify if the list is empty
 		if(!emptyList(trackList)){
 			System.out.println("There was an error while reading the file. Please verify it and try again later.");
 			System.exit(0);
 		}
+		String toReduce = "10%";
 		
 		//Reducing the list
 		trackList = reduceTrack(trackList, toReduce);
 		
 		//Write the new GPX File
-		GPXWriter.gpxWriter(trackList, destinationFile);
+		GPXWriter.gpxWriter(trackList, "../GPX_Project/src/unirio/pm/gpx/file/NewFilefoxboro.gpx");
 		
 		System.out.println("Your file is ready. Enjoy.");
 	}

@@ -16,13 +16,13 @@ import unirio.pm.gpx.rotine.TrackPointToTrack;
 
 public class TrackReducer {
 	
-	static public void remover(String sourceFile, String destinationFile, String toReduce) throws IOException, ParserConfigurationException, SAXException{
+	static public void remover(String file, String toReduce) throws IOException, ParserConfigurationException, SAXException{
 		
 		//Creating object lists
 		ArrayList<Track> trackList = new ArrayList<Track>();
 		
 		//Read GPX File
-		trackList = GPXReader.ReadGPX(sourceFile);
+		trackList = GPXReader.ReadGPX(file);
 		
 		//Verify if the list is empty
 		if(!emptyList(trackList)){
@@ -34,7 +34,7 @@ public class TrackReducer {
 		trackList = reduceTrack(trackList, toReduce);
 		
 		//Write the new GPX File
-		GPXWriter.gpxWriter(trackList, destinationFile);
+		GPXWriter.gpxWriter(trackList, "../GPX_Project/src/unirio/pm/gpx/file/NewFilefoxboro.gpx");
 		
 		System.out.println("Your file is ready. Enjoy.");
 	}
