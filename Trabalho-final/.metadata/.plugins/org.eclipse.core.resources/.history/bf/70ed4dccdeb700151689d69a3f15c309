@@ -66,25 +66,10 @@ public class TrackReducer {
 			trackPointList = TrackPointListFromTrack.getTrackPointList(track);
 					
 			//Reduce TrackPoints
-			//Verify if it's percentage
-			if(toReduce.endsWith("%")) {
-				
-				//Change the characters to int without getting the %
-				int percentageToReduce = Integer.parseInt(toReduce.substring(0, toReduce.length()-1));
-				
-				//Reducing using the percentage function
-				trackPointList = TrackPointReducer.reducePointsByPercentage(trackPointList, percentageToReduce);
+			//trackPointList = TrackPointReducer.reducePointsByDistance(trackPointList, 12.0);
+			trackPointList = TrackPointReducer.reducePointsByPercentage(trackPointList, 10);	
 			
-			} else {
-				
-				//If it's a distance in km, change it to double
-				double distanceToReduce = Double.parseDouble(toReduce);
-				
-				//Reducing using the distance function
-				trackPointList = TrackPointReducer.reducePointsByDistance(trackPointList, distanceToReduce);
-			}
-			
-			//Adding the TrackPoints back to the Track
+			//Put the TrackPoints back to the Track
 			track =  TrackPointToTrack.addingTrackPointsToTrack(track.getName(), trackPointList);
 					
 			//Count the TrackPoints from the track after reducing

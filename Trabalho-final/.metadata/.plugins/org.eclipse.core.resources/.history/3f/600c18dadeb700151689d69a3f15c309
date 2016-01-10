@@ -72,7 +72,7 @@ public class TrackReducer {
 				//Change the characters to int without getting the %
 				int percentageToReduce = Integer.parseInt(toReduce.substring(0, toReduce.length()-1));
 				
-				//Reducing using the percentage function
+				//Reducing using the function
 				trackPointList = TrackPointReducer.reducePointsByPercentage(trackPointList, percentageToReduce);
 			
 			} else {
@@ -80,7 +80,7 @@ public class TrackReducer {
 				//If it's a distance in km, change it to double
 				double distanceToReduce = Double.parseDouble(toReduce);
 				
-				//Reducing using the distance function
+				//Chamar funcao de eliminacao por distancia
 				trackPointList = TrackPointReducer.reducePointsByDistance(trackPointList, distanceToReduce);
 			}
 			

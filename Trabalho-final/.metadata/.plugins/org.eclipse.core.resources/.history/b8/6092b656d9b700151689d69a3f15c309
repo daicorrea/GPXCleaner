@@ -22,17 +22,16 @@ public class TrackReducer {
 		ArrayList<Track> trackList = new ArrayList<Track>();
 		
 		//Read GPX File
+		//trackList = reader.gpxReader("../GPX_ProjectDaiane/src/unirio/pm/gpx/file/foxboro.gpx");
 		trackList = GPXReader.ReadGPX("../GPX_Project/src/unirio/pm/gpx/file/foxboro.gpx");
-		
 		//Verify if the list is empty
 		if(!emptyList(trackList)){
 			System.out.println("There was an error while reading the file. Please verify it and try again later.");
 			System.exit(0);
 		}
-		String toReduce = "10%";
 		
 		//Reducing the list
-		trackList = reduceTrack(trackList, toReduce);
+		trackList = reduceTrack(trackList);
 		
 		//Write the new GPX File
 		GPXWriter.gpxWriter(trackList, "../GPX_Project/src/unirio/pm/gpx/file/NewFilefoxboro.gpx");
@@ -50,7 +49,7 @@ public class TrackReducer {
 	}
 	
 	//Reduce the Track
-	static private ArrayList<Track> reduceTrack(ArrayList<Track> trackList, String toReduce) {
+	static private ArrayList<Track> reduceTrack(ArrayList<Track> trackList) {
 		
 		//Creating list objects
 		ArrayList<TrackPoint> trackPointList = new ArrayList<TrackPoint>();
@@ -66,25 +65,10 @@ public class TrackReducer {
 			trackPointList = TrackPointListFromTrack.getTrackPointList(track);
 					
 			//Reduce TrackPoints
-			//Verify if it's percentage
-			if(toReduce.endsWith("%")) {
-				
-				//Change the characters to int without getting the %
-				int percentageToReduce = Integer.parseInt(toReduce.substring(0, toReduce.length()-1));
-				
-				//Reducing using the percentage function
-				trackPointList = TrackPointReducer.reducePointsByPercentage(trackPointList, percentageToReduce);
+			//trackPointList = TrackPointReducer.reducePointsByDistance(trackPointList, 12.0);
+			trackPointList = TrackPointReducer.reducePointsByPercentage(trackPointList, 10);	
 			
-			} else {
-				
-				//If it's a distance in km, change it to double
-				double distanceToReduce = Double.parseDouble(toReduce);
-				
-				//Reducing using the distance function
-				trackPointList = TrackPointReducer.reducePointsByDistance(trackPointList, distanceToReduce);
-			}
-			
-			//Adding the TrackPoints back to the Track
+			//Put the TrackPoints back to the Track
 			track =  TrackPointToTrack.addingTrackPointsToTrack(track.getName(), trackPointList);
 					
 			//Count the TrackPoints from the track after reducing
