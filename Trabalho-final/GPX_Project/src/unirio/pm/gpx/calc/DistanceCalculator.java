@@ -37,7 +37,7 @@ import unirio.pm.gpx.model.TrackPoint;
 		
 	}
 
-	static public double distanceBetweenTwoPoints(double x1, double y1, double x2, double y2, double x3, double y3){		
+	static private double distanceBetweenTwoPoints(double x1, double y1, double x2, double y2, double x3, double y3){		
 		
 		//Calculating Slope
 		double a = calculateSlope(x1, x3, y1, y3);
@@ -51,7 +51,7 @@ import unirio.pm.gpx.model.TrackPoint;
 		double x4 = calculateOrthogonalX(a, orthA, b, orthB);
 		double y4 = calculateOrthogonalY(orthA, orthB, x4);
 		
-		//Calculating distance
+		//Calculating distance using haversine
 		double d = haversine(x2,y2,x4,y4);
 		return d;
 
@@ -86,12 +86,14 @@ import unirio.pm.gpx.model.TrackPoint;
 		
 		double orthB = y2 - (a * x2);
 		return orthB;
+		
 	}
 	
 	static private double calculateOrthogonalX(double a, double orthA, double b, double orthB){
 		
 		double x4 = (orthB - b)/(a - orthA);
 		return x4;
+	
 	}
 	
 	static private double calculateOrthogonalY(double orthA, double orthB, double x4){

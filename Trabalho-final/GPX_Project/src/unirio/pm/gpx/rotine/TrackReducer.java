@@ -8,7 +8,7 @@ import unirio.pm.gpx.model.TrackSegment;
 import unirio.pm.gpx.parser.ReadGPX;
 import unirio.pm.gpx.parser.WriteGPX;
 import unirio.pm.gpx.rotine.TrackPointListFromTrack;
-import unirio.pm.gpx.calc.TrackpointsReducer;
+import unirio.pm.gpx.calc.TrackPointReducer;
 
 public class TrackReducer {
 	
@@ -39,7 +39,7 @@ public class TrackReducer {
 			trackPointList = TrackPointListFromTrack.getTrackPointList(track);
 			
 			//Reduce TrackPoints
-			trackPointList = TrackpointsReducer.reducePointsByMeters(trackPointList, 250.0);
+			trackPointList = TrackPointReducer.reducePointsByMeters(trackPointList, 12.0);
 			
 			//Count the TrackPoints from the track after reducing
 			track.countTrackPoints();

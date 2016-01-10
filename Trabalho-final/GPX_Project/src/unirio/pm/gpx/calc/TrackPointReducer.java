@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import unirio.pm.gpx.calc.DistanceCalculator;
 import unirio.pm.gpx.model.TrackPoint;
 
-public class TrackpointsReducer {
+public class TrackPointReducer {
 	
 	static public ArrayList<TrackPoint> reducePointsByMeters(ArrayList<TrackPoint> trackPointList, Double meters) {
 		
@@ -13,18 +13,23 @@ public class TrackpointsReducer {
 		//Creating objects
 		TrackPoint previous = null;
 		TrackPoint next = null;
+		
+		ArrayList<TrackPoint> newList = new ArrayList<TrackPoint>();
 		double d = 0;
 		int i = 0;
-		
+		int ni = 0;
 		int TrackPointListSize = trackPointList.size();
 		
+		System.out.println("tamanho da lista : " + TrackPointListSize);
 		//Loop for TrackPoint List
 		for (TrackPoint trackPoint : trackPointList) {
 			System.out.println("tamanho : " + i);
-			//it can't be the first or the last trackpoint from the list
+			
 			if(!emptyList(trackPointList)) {
-					//System.out.println("entrou: trackpoint");
-					if((i!=0)&&(i!=TrackPointListSize-1)) {
+				System.out.println("empty? : " + i);
+				//it can't be the first or the last trackpoint from the list
+				if((i!=0)&&(i!=TrackPointListSize-1)) {
+					
 					//previous = trackSegment.getTrackPoints().get(i-1);
 					previous = trackPointList.get(i-1);
 						//System.out.println("previous: ");
@@ -34,21 +39,24 @@ public class TrackpointsReducer {
 						//System.out.println("next: ");
 						//System.out.println(next);
 						//System.out.println("current:"+ trackPoint);
-						d = DistanceCalculator.getDistance(trackPoint, previous, next);
-						System.out.println("d retornado: " + d);
+					d = DistanceCalculator.getDistance(trackPoint, previous, next);
+					System.out.println("d retornado: " + d);
 						//System.out.println("metros: " + meters);
-						System.out.println((d < meters));
-						if(d < meters) {
-							//remove the trackpoint from the list
-							System.out.println("removeu um!!");
-							trackPointList.remove(trackPoint);
-						}
-					//System.out.println(i);
+					System.out.println((d > meters));
+					if(d > meters) {
+						//remove the trackpoint from the list
+						System.out.println("adicionou um!!");
+						newList.add(trackPoint);
+						ni++;
+					}
+					
 				}
+				i++;	
+				System.out.println("aumentando i : " + i);
 			}
 		}
-		
-		return trackPointList;
+		System.out.println("ni : " + ni);
+		return newList;
 		
 	}
 	
@@ -56,9 +64,9 @@ public class TrackpointsReducer {
 	static public boolean emptyList(ArrayList<TrackPoint> trackPointList) {
 		
 		if (trackPointList.size() > 0){
-			return true;
-		} else {
 			return false;
+		} else {
+			return true;
 		}
 		
 	}
