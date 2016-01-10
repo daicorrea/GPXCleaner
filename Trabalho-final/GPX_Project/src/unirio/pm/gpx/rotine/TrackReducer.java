@@ -13,7 +13,7 @@ import unirio.pm.gpx.rotine.TrackPointToTrack;
 
 public class TrackReducer {
 	
-	static public void distanceRemover() throws IOException{
+	static public void remover() throws IOException{
 		
 		//Creating object lists
 		ArrayList<Track> trackList = new ArrayList<Track>();
@@ -62,8 +62,9 @@ public class TrackReducer {
 			trackPointList = TrackPointListFromTrack.getTrackPointList(track);
 					
 			//Reduce TrackPoints
-			trackPointList = TrackPointReducer.reducePointsByDistance(trackPointList, 12.0);
-					
+			//trackPointList = TrackPointReducer.reducePointsByDistance(trackPointList, 12.0);
+			trackPointList = TrackPointReducer.reducePointsByPercentage(trackPointList, 10);	
+			
 			//Put the TrackPoints back to the Track
 			track =  TrackPointToTrack.addingTrackPointsToTrack(track.getName(), trackPointList);
 					

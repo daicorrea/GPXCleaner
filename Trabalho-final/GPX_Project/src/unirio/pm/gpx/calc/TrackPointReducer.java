@@ -1,6 +1,7 @@
 package unirio.pm.gpx.calc;
  
 import java.util.ArrayList;
+
 import unirio.pm.gpx.calc.DistanceCalculator;
 import unirio.pm.gpx.model.TrackPoint;
 
@@ -20,37 +21,44 @@ public class TrackPointReducer {
 		int TrackPointListSize = trackPointList.size();
 		System.out.println("tamanho da lista : " + TrackPointListSize);
 		
+		//Verifying if the list is empty
+		if(emptyList(trackPointList)){
+			System.out.println("There was an error while reading the file. Please verify it and try again later.");
+			System.exit(0);
+		}
+		
+		//Verifying if there's more than two TrackPoints
+		if(onlyTwoTrackPoints(trackPointList)){
+			System.out.println("Your list has only two values, the file will not be changed.");
+			System.exit(0);
+		}
+		
 		//Creating Loop for TrackPoint List
 		for (TrackPoint trackPoint : trackPointList) {
-			System.out.println("tamanho : " + i);
-			
-			//Verifying if the list is empty
-			if(!emptyList(trackPointList)) {
 								
-				//For the calc, the TrackPoint can't be the first or the last on the list
-				if((i!=0)&&(i!=TrackPointListSize-1)) {
+			//For the calc, the TrackPoint can't be the first or the last on the list
+			if((i!=0)&&(i!=TrackPointListSize-1)) {
 					
-					//Get the previous and the next TrackPoint
-					previous = trackPointList.get(i-1);
-					next = trackPointList.get(i+1);
+				//Get the previous and the next TrackPoint
+				previous = trackPointList.get(i-1);
+				next = trackPointList.get(i+1);
 					
-					//Calculating the distance from the TrackPoints
-					d = DistanceCalculator.getDistance(trackPoint, previous, next);
-					//System.out.println("d retornado: " + d);
-					//System.out.println((d > meters));
+				//Calculating the distance from the TrackPoints
+				d = DistanceCalculator.getDistance(trackPoint, previous, next);
+				//System.out.println("d retornado: " + d);
+				//System.out.println((d > meters));
 					
-					//Verifying if the calculated distance is bigger than the desired one
-					if(d > distance) {
-						System.out.println("adicionou um!!");
+				//Verifying if the calculated distance is bigger than the desired one
+				if(d > distance) {
+					System.out.println("adicionou um!!");
 						
-						//Adding to the new TrackPoint list
-						newTrackPointList.add(trackPoint);
-						ni++;
-					}
-					
+					//Adding to the new TrackPoint list
+					newTrackPointList.add(trackPoint);
+					ni++;
 				}
-				i++;	
+					
 			}
+			i++;	
 		}
 		
 		System.out.println("ni : " + ni);
@@ -62,59 +70,87 @@ static public ArrayList<TrackPoint> reducePointsByPercentage(ArrayList<TrackPoin
 		
 		System.out.println("entrou em reducePointsByPercentage");
 		
-		//Total from percentage to remove
-		int totalTrackPointsToRemove = (trackPointList.size() * percentage)/100;
+		//Counter to know how many TrackPoints were already removed
+		int trackPointCount = 0;
+		
+		//Quantity of TrackPoints from percentage to remove
+		int trackPointsToRemove = ((trackPointList.size() * percentage)/100);
+		System.out.println("trackPointsToRemove: " + trackPointsToRemove);
+		
+		//Index of the TrackPoint to remove from the list
+		int trackPointToRemove;
+		
+		//New list to return
+		//ArrayList<TrackPoint> newTrackPointList = new ArrayList<TrackPoint>();
+		
+		//Loop to last until the percentage is achieved
+		while(trackPointsToRemove > trackPointCount) {
+			
+			//Get the smallest TrackPoint
+			trackPointToRemove = smallestTrackPoint(trackPointList);
+			
+			//Remove it from the list
+			trackPointList.remove(trackPointToRemove);
+			
+			trackPointCount++;
+		}
+		
+		return trackPointList;
+		
+	}
+
+	//Verify the TrackPoint with the smallest distance
+	static private int smallestTrackPoint(ArrayList<TrackPoint> trackPointList) {
+		
+		//Object to identify smallest distance
+		double smallestDistance = 1000000;
+		
+		//Index to return
+		int indexSmallest = 0;
 		
 		//Creating objects
 		TrackPoint previous = null;
 		TrackPoint next = null;
-		ArrayList<TrackPoint> newTrackPointList = new ArrayList<TrackPoint>();
 		double d = 0;
 		int i = 0;
-		int ni = 0;
 		int TrackPointListSize = trackPointList.size();
 		System.out.println("tamanho da lista : " + TrackPointListSize);
 		
+		//Verifying if the list is empty
+		if(emptyList(trackPointList)){
+			System.out.println("There was an error while reading the file. Please verify it and try again later.");
+			System.exit(0);
+		}
+				
 		//Creating Loop for TrackPoint List
 		for (TrackPoint trackPoint : trackPointList) {
-			System.out.println("tamanho : " + i);
-			
-			//Verifying if the list is empty
-			if(!emptyList(trackPointList)) {
-								
-				//For the calc, the TrackPoint can't be the first or the last on the list
-				if((i!=0)&&(i!=TrackPointListSize-1)) {
-					
-					//Get the previous and the next TrackPoint
-					previous = trackPointList.get(i-1);
-					next = trackPointList.get(i+1);
-					
-					//Calculating the distance from the TrackPoints
-					d = DistanceCalculator.getDistance(trackPoint, previous, next);
-					//System.out.println("d retornado: " + d);
-					//System.out.println((d > meters));
-					
-					//Verifying if the calculated distance is bigger than the desired one
-					if(d > percentage) {
-						System.out.println("adicionou um!!");
+			//System.out.println("tamanho : " + i);
 						
-						//Adding to the new TrackPoint list
-						newTrackPointList.add(trackPoint);
-						ni++;
-					}
+			//For the calc, the TrackPoint can't be the first or the last on the list
+			if((i!=0)&&(i!=TrackPointListSize-1)) {
 					
+				//Get the previous and the next TrackPoint
+				previous = trackPointList.get(i-1);
+				next = trackPointList.get(i+1);
+					
+				//Calculating the distance from the TrackPoints
+				d = DistanceCalculator.getDistance(trackPoint, previous, next);
+				//System.out.println("d retornado: " + d);
+				//System.out.println((d > meters));
+				
+				//Verifying if the calculated distance is bigger than the desired one
+				if(d < smallestDistance) {
+					//System.out.println("removeu um!!");
+					indexSmallest = i;
 				}
-				i++;	
 			}
+			i++;	
 		}
-		
-		System.out.println("ni : " + ni);
-		return newTrackPointList;
-		
+		return indexSmallest;
 	}
 	
 	//Verify if there's at least one TrackPoint in the list.
-	static public boolean emptyList(ArrayList<TrackPoint> trackPointList) {
+	static private boolean emptyList(ArrayList<TrackPoint> trackPointList) {
 		
 		if (trackPointList.size() > 0){
 			return false;
@@ -126,7 +162,7 @@ static public ArrayList<TrackPoint> reducePointsByPercentage(ArrayList<TrackPoin
 	
 	//Verify if the list has only two TrackPoints. As it's not possible to take the
 	//first and the last TrackPoints, the output will be the same as the input.
-	static public boolean onlyTwoTrackPoints(ArrayList<TrackPoint> trackPointList) {
+	static private boolean onlyTwoTrackPoints(ArrayList<TrackPoint> trackPointList) {
 		
 		if (trackPointList.size() > 2){
 			return false;
@@ -135,66 +171,6 @@ static public ArrayList<TrackPoint> reducePointsByPercentage(ArrayList<TrackPoin
 		}
 		
 	}
-	
-	
-	/*
-	 static public ArrayList<TrackPoint> reducePointsByMeters(ArrayList<TrackPoint> trackPointList, Double meters){
-		System.out.println("entrou em reducePointsByMeters");
-		double d = 0;
-		TrackPoint previous = null;
-		TrackPoint next = null;
-		/*for (Track track : trackList) {
-			System.out.println("entrou: track");
-			ArrayList<TrackSegment> trackSegmentList = track.getSegments();
-			for (TrackSegment trackSegment : trackSegmentList) {
-				System.out.println("tamanho"+trackSegmentList.size());
-				System.out.println("entrou: segment");
-				ArrayList<TrackPoint> trackPointList = trackSegment.getTrackPoints();
-				//////////FECHAR AQUI *  /
-				int i = 1;
-				for (TrackPoint trackPoint : trackPointList) {
-					int tamanho = trackPointList.size();
-					System.out.println("tamanho : " + tamanho);
-					//it can't be the first or the last trackpoint from the list
-					if(trackPointList.size() > 2) {
-						while(i < (trackPointList.size()-1)) {
-							//System.out.println("entrou: trackpoint");
-							//if((i!=0)||(i!=trackPointList.size()-1)) {
-								//previous = trackSegment.getTrackPoints().get(i-1);
-							previous = trackPointList.get(i-1);
-								//System.out.println("previous: ");
-								//System.out.println(previous);
-								//next = trackSegment.getTrackPoints().get(i+1);
-							next = trackPointList.get(i+1);
-								//System.out.println("next: ");
-								//System.out.println(next);
-								//System.out.println("current:"+ trackPoint);
-								d = DistanceCalculator.getDistance(trackPoint, previous, next);
-								System.out.println("d retornado: " + d);
-								//System.out.println("metros: " + meters);
-								System.out.println((d < meters));
-								if(d < meters) {
-									//remove the trackpoint from the list
-									//System.out.println("removeu um!!");
-									trackPointList.remove(trackPoint);
-								}
-							//}
-							i++;
-							//System.out.println(i);
-						}
-					}
-				//}
-				
-			//}
-			
-		}
-		return trackPointList;
-	}
-	
-	 */
-	
-	
-		
 		
 }
 	

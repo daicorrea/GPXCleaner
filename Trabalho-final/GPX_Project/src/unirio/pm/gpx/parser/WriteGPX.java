@@ -14,7 +14,7 @@ public class WriteGPX {
 	
 	//Create GPX opening tag
 	private static final String tag_gpx = "<gpx "+ "\n" + 
-		"\t" + "creator=\"LoadMyTracks/045 http://www.cluetrust.com/LoadMyTracks.html\"" + "\n" + 
+		"\t" + "creator=\"Daiane Correa, Felipe Guedes, Cesar\"" + "\n" + 
 		"\t" + "version=\"1.1\" xmlns=\"http://www.topografix.com/GPX/1/1\"" + "\n" +
 		"\t" + "xmlns:geocache=\"http://www.groundspeak.com/cache/1/0\"" + "\n" +
 		"\t" + "xmlns:gpxdata=\"http://www.cluetrust.com/XML/GPXDATA/1/0\"" + "\n" +
@@ -25,11 +25,6 @@ public class WriteGPX {
 	// Writes the GPX file
 	public static void gpxWriter(ArrayList<Track> trackList, String targetFile)
 			throws IOException {
-		
-
-		for (Track track : trackList) { 
-			System.out.println("CONTANDO DENTRO DO WRITE: " + track.countTrackPoints());
-		}
 		
 		FileWriter fw = new FileWriter(new File(targetFile));
 		fw.write(xml_header + "\n");
