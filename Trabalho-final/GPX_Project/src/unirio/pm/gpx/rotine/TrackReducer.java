@@ -7,38 +7,40 @@ import unirio.pm.gpx.model.Track;
 import unirio.pm.gpx.model.TrackPoint;
 import unirio.pm.gpx.parser.ReadGPX;
 import unirio.pm.gpx.parser.WriteGPX;
+import unirio.pm.gpx.parser.newReadGPX;
 import unirio.pm.gpx.rotine.TrackPointListFromTrack;
 import unirio.pm.gpx.calc.TrackPointReducer;
 import unirio.pm.gpx.rotine.TrackPointToTrack;
 
 public class TrackReducer {
 	
-	static public void remover() throws IOException {
+	static public void remover() throws IOException{
 		
 		//Creating object lists
 		ArrayList<Track> trackList = new ArrayList<Track>();
 		
 		//Read GPX File
-		ReadGPX reader = new ReadGPX();
-		trackList = reader.gpxReader("../GPX_Project/src/unirio/pm/gpx/file/Century-2007-02-18.gpx");
-				
+		//ReadGPX reader = new ReadGPX();
+		newReadGPX reader = new newReadGPX();
+		//trackList = reader.gpxReader("../GPX_ProjectDaiane/src/unirio/pm/gpx/file/foxboro.gpx");
+				reader.ReadXML();
 		//Verify if the list is empty
-		if(!emptyList(trackList)){
-			System.out.println("There was an error while reading the file. Please verify it and try again later.");
-			System.exit(0);
-		}
+//		if(!emptyList(trackList)){
+//			System.out.println("There was an error while reading the file. Please verify it and try again later.");
+//			System.exit(0);
+//		}
 		
 		//Reducing the list
-		trackList = reduceTrack(trackList);
+//		trackList = reduceTrack(trackList);
 		
 		//Write the new GPX File
-		WriteGPX.gpxWriter(trackList, "../GPX_Project/src/unirio/pm/gpx/file/NewFileCentury-2007-02-18-new.gpx");
+		WriteGPX.gpxWriter(trackList, "../GPX_Project/src/unirio/pm/gpx/file/NewFilefoxboro.gpx");
 		
 		System.out.println("Your file is ready. Enjoy.");
 	}
 	
 	//Verify if there is at least one Track in the list.
-	static private boolean emptyList(ArrayList<Track> trackList) {
+	static private boolean emptyList(ArrayList<Track> trackList){
 		if (trackList.size() > 0){
 			return true;
 		} else {
