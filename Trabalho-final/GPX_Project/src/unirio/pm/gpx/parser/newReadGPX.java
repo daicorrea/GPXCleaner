@@ -25,7 +25,7 @@ public class newReadGPX {
 	static public void ReadXML() throws IOException{
 	try {
 
-		File fXmlFile = new File("/Users/cesar/Desktop/GPX_Project/src/unirio/pm/gpx/file/Century-2007-09-01.gpx");
+		File fXmlFile = new File("../GPX_Project/src/unirio/pm/gpx/file/Century-2007-09-01.gpx");
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(fXmlFile);
@@ -67,12 +67,12 @@ public class newReadGPX {
 		//System.out.println("\nCurrent Element :" + nNode.getNodeName());
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
-		/*
+		
 		System.out.println("latitude : " + eElement.getAttribute("lat"));
 		System.out.println("longitude : " + eElement.getAttribute("lon"));
 		System.out.println("Element : " + eElement.getElementsByTagName("ele").item(0).getTextContent());
 		System.out.println("Time : " + eElement.getElementsByTagName("time").item(0).getTextContent());
-		*/	
+			
 		
 				String latitude 	= eElement.getAttribute("lat");
 				String longitude 	= eElement.getAttribute("lon");
@@ -81,7 +81,7 @@ public class newReadGPX {
 		
 				TrackPoint trackpoint = new TrackPoint(Float.valueOf(latitude),Float.valueOf(longitude),Float.valueOf(ele),time);	
 				TrackPointlist.add(trackpoint);
-		System.out.println("Estamos no segundo for : "+ TrackPointlist.get(temp2).getLatitude()); 
+		//System.out.println("Estamos no segundo for : "+ TrackPointlist.get(temp2).getLatitude()); 
 		//System.out.println("Estamos no segundo for 2 : " + TrackPointlist.get(temp2).getEle());
 			}
 		}
