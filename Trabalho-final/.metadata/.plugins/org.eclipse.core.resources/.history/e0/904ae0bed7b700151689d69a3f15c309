@@ -28,14 +28,15 @@ public class TrackReducer {
 		newReadGPX reader = new newReadGPX();
 		//trackList = reader.gpxReader("../GPX_ProjectDaiane/src/unirio/pm/gpx/file/foxboro.gpx");
 		trackList = newReadGPX.ReadGPX("../GPX_Project/src/unirio/pm/gpx/file/foxboro.gpx");
+		//newReadGPX.ReadGPX("../GPX_ProjectDaiane/src/unirio/pm/gpx/file/foxboro.gpx");
 		//Verify if the list is empty
-		if(!emptyList(trackList)){
-			System.out.println("There was an error while reading the file. Please verify it and try again later.");
-			System.exit(0);
-		}
+//		if(!emptyList(trackList)){
+//			System.out.println("There was an error while reading the file. Please verify it and try again later.");
+//			System.exit(0);
+//		}
 		
 		//Reducing the list
-		trackList = reduceTrack(trackList);
+//		trackList = reduceTrack(trackList);
 		
 		//Write the new GPX File
 		WriteGPX.gpxWriter(trackList, "../GPX_Project/src/unirio/pm/gpx/file/NewFilefoxboro.gpx");

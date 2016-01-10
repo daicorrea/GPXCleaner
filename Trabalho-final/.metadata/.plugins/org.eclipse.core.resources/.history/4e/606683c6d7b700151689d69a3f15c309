@@ -77,6 +77,7 @@ public class newReadGPX {
 							String ele = eElement.getElementsByTagName("ele").item(i).getTextContent();
 							String time	= eElement.getElementsByTagName("time").item(i).getTextContent();	
 							
+							System.out.println("latitude: " + latitude);
 							//Creating new TrackPoing
 							TrackPoint trackpoint = new TrackPoint(Float.valueOf(latitude),Float.valueOf(longitude),Float.valueOf(ele),time);	
 							TrackPointlist.add(trackpoint);
