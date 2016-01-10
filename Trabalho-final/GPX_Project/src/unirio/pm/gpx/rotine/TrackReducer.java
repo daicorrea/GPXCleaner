@@ -34,6 +34,7 @@ public class TrackReducer {
 		//Write the new GPX File
 		WriteGPX.gpxWriter(trackList, "../GPX_Project/src/unirio/pm/gpx/file/NewFileCentury-2007-02-18-new.gpx");
 		
+		System.out.println("Your file is ready. Enjoy.");
 	}
 	
 	//Verify if there is at least one Track in the list.

@@ -7,7 +7,7 @@ import java.util.*;
 import parserPackage.*;
 import javax.xml.bind.*;
 
-//Creat class for parsing the GPX file
+//Create class for parsing the GPX file
 public class ReadGPX { 
 	
 	//Receives a .gpx file and reads its elements
