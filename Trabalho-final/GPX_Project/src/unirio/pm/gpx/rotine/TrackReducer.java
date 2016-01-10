@@ -13,7 +13,7 @@ import unirio.pm.gpx.rotine.TrackPointToTrack;
 
 public class TrackReducer {
 	
-	static public void remover() throws IOException{
+	static public void remover() throws IOException {
 		
 		//Creating object lists
 		ArrayList<Track> trackList = new ArrayList<Track>();
@@ -38,7 +38,7 @@ public class TrackReducer {
 	}
 	
 	//Verify if there is at least one Track in the list.
-	static private boolean emptyList(ArrayList<Track> trackList){
+	static private boolean emptyList(ArrayList<Track> trackList) {
 		if (trackList.size() > 0){
 			return true;
 		} else {
