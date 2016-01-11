@@ -29,6 +29,9 @@ public class TestCalc {
 	@Test
 	public void TestDistance() {
 		
+		//Calculating distance between coordinates
+
+
 		//x1 = longitude of previous point
 		double x1 = -71.281; 
 		//y1 = latitude of previous point
@@ -42,7 +45,6 @@ public class TestCalc {
 		//y3 = latitude of next point
 		double y3 = 42.049; 
 		
-		//Calculating distance between coordinates
 		double h = DistanceCalculator.distanceBetweenPoints(x1, y1, x2, y2, x3, y3);
 		System.out.println("h: " + h);
 		double hResult = 7994;

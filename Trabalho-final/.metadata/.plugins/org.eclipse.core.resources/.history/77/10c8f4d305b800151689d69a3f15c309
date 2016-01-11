@@ -29,23 +29,25 @@ public class TestCalc {
 	@Test
 	public void TestDistance() {
 		
-		//x1 = longitude of previous point
-		double x1 = -71.281; 
-		//y1 = latitude of previous point
-		double y1 = 42.052;
-		//x2 = longitude of previous point
-		double x2 = -71.279;
-		//y1 = latitude of previous point
-		double y2 = 42.055; 
-		//x3 = longitude of next point
-		double x3 = -71.266; 
-		//y3 = latitude of next point
-		double y3 = 42.049; 
-		
 		//Calculating distance between coordinates
+
+
+		//x1 = longitude of previous point
+		double x1 = -71.28133392333984; 
+		//y1 = latitude of previous point
+		double y1 = 42.0527229309082;
+		//x2 = longitude of previous point
+		double x2 = -71.27935791015625;
+		//y1 = latitude of previous point
+		double y2 = 42.055965423583984; 
+		//x3 = longitude of next point
+		double x3 = -71.26622772216797; 
+		//y3 = latitude of next point
+		double y3 = 42.0498046875; 
+		
 		double h = DistanceCalculator.distanceBetweenPoints(x1, y1, x2, y2, x3, y3);
 		System.out.println("h: " + h);
-		double hResult = 7994;
+		double hResult = 7990.06614441213;
 		System.out.println("hResult: " + hResult);
 		
 		//Testing with the delta as 1

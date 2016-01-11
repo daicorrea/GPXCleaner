@@ -50,8 +50,11 @@ import unirio.pm.gpx.model.TrackPoint;
 		
 		//Calculating distance using haversine
 		double d = haversine(x2,y2,x4,y4);
-		System.out.println("d : " + d);
 		return d;
+		
+		System.out.println("d : " + d);
+		
+		
 
 	}
 

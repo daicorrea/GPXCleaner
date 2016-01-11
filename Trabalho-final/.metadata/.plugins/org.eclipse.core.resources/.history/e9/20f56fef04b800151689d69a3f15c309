@@ -1,0 +1,32 @@
+package unirio.pm.gpx.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import unirio.pm.gpx.calc.DistanceCalculator;
+
+public class TestCalc {
+
+	@Test
+	public void testHaversine() {
+		
+		//Calculating distance between coordinates
+		double y1 = 2;
+		double x1 = 4;
+		double y3 = 8;
+		double x3 = 10;
+		
+		double h = DistanceCalculator.haversine(y1, x1, y3, x3);
+		System.out.println("h: " + h);
+		double hResult = 941;
+		
+		//Testing with the delta as 1
+        assertEquals(h, hResult, 1); 
+		
+	}
+	
+	
+	
+
+}
