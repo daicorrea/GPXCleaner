@@ -1,0 +1,44 @@
+package unirio.pm.gpx.test;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.junit.Test;
+
+import unirio.pm.gpx.calc.TrackPointReducer;
+import unirio.pm.gpx.model.TrackPoint;
+
+public class TestReducer {
+
+	@Test
+	//Verify if Trackpoint list is empty
+	public void testEmptyList() {
+		//Adding TrackPoints to the list
+		ArrayList<TrackPoint> trackPointlist = new ArrayList<TrackPoint>();
+		TrackPoint trackPoint = createTrackPoint();
+		trackPointlist.add(trackPoint);
+		
+		//Testing
+		assertTrue(TrackPointReducer.emptyList(trackPointlist));
+		
+		
+		
+	}
+	
+	//Creating new TrackPoint
+	static private TrackPoint createTrackPoint() {
+		String latitude = "44.0226203";
+		String longitude = "-123.1245494";
+		String ele = "295.742676";
+		String time	= "2007-02-18T03:33:26Z";	
+		
+		//Creating new TrackPoing
+		TrackPoint trackPoint = new TrackPoint(Float.valueOf(latitude),Float.valueOf(longitude),Float.valueOf(ele),time);	
+		return trackPoint;
+	}
+	
+	
+	
+
+}

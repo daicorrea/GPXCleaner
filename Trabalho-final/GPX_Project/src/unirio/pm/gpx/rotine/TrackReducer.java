@@ -40,7 +40,7 @@ public class TrackReducer {
 	}
 	
 	//Verify if there is at least one Track in the list.
-	static private boolean emptyList(ArrayList<Track> trackList){
+	static public boolean emptyList(ArrayList<Track> trackList){
 		if (trackList.size() > 0){
 			return true;
 		} else {

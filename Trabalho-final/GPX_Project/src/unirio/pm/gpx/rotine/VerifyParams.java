@@ -15,6 +15,8 @@ public class VerifyParams {
 			System.out.println("For this program it's necessary to have three parameters. Please, revise your command and try again later.");
 			System.exit(0);
 		}
+		
+		//se e gpx
 	}
 	
 	//Verify if the params are null
@@ -27,12 +29,17 @@ public class VerifyParams {
 	}
 	
 	//Verify if there are three params
+	//FAZER ISSO AQUI
 	static private boolean areThree(String[] args) {
-		if(args == null) {
+		if(args.length == 3) {
+			System.out.println("UHUL");
 			return true;
 		} else {
+			System.out.println("aaa");
 			return false;
 		}
 	}
+
+	
 
 }

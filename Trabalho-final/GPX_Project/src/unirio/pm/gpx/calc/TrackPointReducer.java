@@ -9,17 +9,13 @@ public class TrackPointReducer {
 	
 	static public ArrayList<TrackPoint> reducePointsByDistance(ArrayList<TrackPoint> trackPointList, Double distance) {
 		
-		System.out.println("entrou em reducePointsByDistance");
-		
 		//Creating objects
 		TrackPoint previous = null;
 		TrackPoint next = null;
 		ArrayList<TrackPoint> newTrackPointList = new ArrayList<TrackPoint>();
 		double d = 0;
 		int i = 0;
-		int ni = 0;
-		int TrackPointListSize = trackPointList.size();
-		System.out.println("tamanho da lista : " + TrackPointListSize);
+		int trackPointListSize = trackPointList.size();
 		
 		//Verifying if the list is empty
 		if(emptyList(trackPointList)){
@@ -37,7 +33,7 @@ public class TrackPointReducer {
 		for (TrackPoint trackPoint : trackPointList) {
 								
 			//For the calc, the TrackPoint can't be the first or the last on the list
-			if((i!=0)&&(i!=TrackPointListSize-1)) {
+			if((i!=0)&&(i!=trackPointListSize-1)) {
 					
 				//Get the previous and the next TrackPoint
 				previous = trackPointList.get(i-1);
@@ -54,14 +50,12 @@ public class TrackPointReducer {
 						
 					//Adding to the new TrackPoint list
 					newTrackPointList.add(trackPoint);
-					ni++;
 				}
 					
 			}
 			i++;	
 		}
 		
-		System.out.println("ni : " + ni);
 		return newTrackPointList;
 		
 	}
@@ -113,8 +107,8 @@ static public ArrayList<TrackPoint> reducePointsByPercentage(ArrayList<TrackPoin
 		TrackPoint next = null;
 		double d = 0;
 		int i = 0;
-		int TrackPointListSize = trackPointList.size();
-		System.out.println("tamanho da lista : " + TrackPointListSize);
+		int trackPointListSize = trackPointList.size();
+		System.out.println("tamanho da lista : " + trackPointListSize);
 		
 		//Verifying if the list is empty
 		if(emptyList(trackPointList)){
@@ -127,7 +121,7 @@ static public ArrayList<TrackPoint> reducePointsByPercentage(ArrayList<TrackPoin
 			//System.out.println("tamanho : " + i);
 						
 			//For the calc, the TrackPoint can't be the first or the last on the list
-			if((i!=0)&&(i!=TrackPointListSize-1)) {
+			if((i!=0)&&(i!=trackPointListSize-1)) {
 					
 				//Get the previous and the next TrackPoint
 				previous = trackPointList.get(i-1);
@@ -150,7 +144,7 @@ static public ArrayList<TrackPoint> reducePointsByPercentage(ArrayList<TrackPoin
 	}
 	
 	//Verify if there's at least one TrackPoint in the list.
-	static private boolean emptyList(ArrayList<TrackPoint> trackPointList) {
+	static public boolean emptyList(ArrayList<TrackPoint> trackPointList) {
 		
 		if (trackPointList.size() > 0){
 			return false;
