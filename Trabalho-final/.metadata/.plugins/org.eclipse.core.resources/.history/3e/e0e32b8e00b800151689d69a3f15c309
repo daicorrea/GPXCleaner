@@ -12,6 +12,7 @@ import org.xml.sax.SAXException;
 
 import unirio.pm.gpx.model.Track;
 import unirio.pm.gpx.model.TrackPoint;
+import unirio.pm.gpx.model.TrackSegment;
 import unirio.pm.gpx.parser.GPXReader;
 
 public class TestFile {
@@ -28,11 +29,17 @@ public class TestFile {
 	    //Read GPX File
 	    try {
 			trackList = GPXReader.ReadGPX(testFileName);
-		} catch (IOException | ParserConfigurationException | SAXException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
 			e.printStackTrace();
 		}
 	    
+	    //Getting the elem readed
+	    TrackSegment segment = trackList.get(0).getSegments().get(0);
+	    Float readElem = segment.getTrackPoints().get(0).getEle();
 	    //Getting the TrackPoint list read
 	    trackPointsRead = trackList.get(0).getSegments().get(0).getTrackPoints();
 	    
@@ -43,7 +50,7 @@ public class TestFile {
 	    TrackPoint secTrackPoint = createTrackPoint("43.050664", "-72.267238", "64.584351", "2002-03-06T05:20:07Z");	
 	    trackPointlist.add(secTrackPoint);
 	    
-	    //Testing the list size
+	    //Testing the list
 	    assertEquals(trackPointlist.size(), trackPointsRead.size());
 	    System.out.println("size: "+ trackPointlist.size());
 	    
@@ -52,7 +59,9 @@ public class TestFile {
 	    	System.out.println(i);
 	    	float elem1 = trackPointlist.get(i).getEle();
 	    	float elem2 = trackPointsRead.get(i).getEle();
-            //assuming that both lists are sorted and the delta is 0.0002
+            System.out.println("1: "+elem1);
+            System.out.println("2: "+elem2);
+            //assuming that both lists are sorted
             assertEquals(elem1, elem2, 0.0002); 
             
         };

@@ -12,6 +12,7 @@ import org.xml.sax.SAXException;
 
 import unirio.pm.gpx.model.Track;
 import unirio.pm.gpx.model.TrackPoint;
+import unirio.pm.gpx.model.TrackSegment;
 import unirio.pm.gpx.parser.GPXReader;
 
 public class TestFile {
@@ -28,8 +29,11 @@ public class TestFile {
 	    //Read GPX File
 	    try {
 			trackList = GPXReader.ReadGPX(testFileName);
-		} catch (IOException | ParserConfigurationException | SAXException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
 			e.printStackTrace();
 		}
 	    
