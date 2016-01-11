@@ -61,6 +61,21 @@ public class TestReducer {
 	    assertFalse(TrackPointReducer.emptyList(trackPointlist));
 	}
 	
+	@Test
+	//Verify if TrackPoints are in the same place
+	public void testTrackPointsInSamePlace() {
+		
+		//Adding TrackPoints to the list
+		ArrayList<TrackPoint> trackPointlist = new ArrayList<TrackPoint>();
+		TrackPoint firstTrackPoint = createTrackPoint("42.050664", "-71.267238", "63.584351", "2002-03-06T04:23:07Z");
+		trackPointlist.add(firstTrackPoint);
+		TrackPoint secTrackPoint = createTrackPoint("42.050664", "-71.267238", "62.584351", "2002-03-06T05:26:07Z");
+		trackPointlist.add(secTrackPoint);
+		
+		//Testing calling the function
+		assertTrue(TrackPointReducer.pointsAtTheSamePlace(firstTrackPoint, secTrackPoint));
+	}
+	
 	//Creating new TrackPoint
 	static private TrackPoint createTrackPoint(String latitude, String longitude, String ele, String time) {
 		TrackPoint trackPoint = new TrackPoint(Float.valueOf(latitude),Float.valueOf(longitude),Float.valueOf(ele),time);	

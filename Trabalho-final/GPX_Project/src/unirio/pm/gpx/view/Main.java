@@ -16,7 +16,8 @@ public class Main {
 		VerifyParams.verify(argsal);
 		
 		//Adicionar verificacao dos args da main
-		TrackReducer.remover("../GPX_Project/src/unirio/pm/gpx/file/foxboro.gpx", "../GPX_Project/src/unirio/pm/gpx/file/NewFilefoxboro.gpx", "10%");
+		
+		TrackReducer.remover("../GPX_Project/src/unirio/pm/gpx/file/foxboro.gpx", "../GPX_Project/src/unirio/pm/gpx/file/NewFilefoxboro.gpx", "10");
 		
 	}
 }

@@ -18,7 +18,6 @@ public class TestCalc {
 		double x3 = 10;
 		
 		double h = DistanceCalculator.haversine(y1, x1, y3, x3);
-		System.out.println("h: " + h);
 		double hResult = 941;
 		
 		//Testing with the delta as 1
@@ -44,9 +43,7 @@ public class TestCalc {
 		
 		//Calculating distance between coordinates
 		double h = DistanceCalculator.distanceBetweenPoints(x1, y1, x2, y2, x3, y3);
-		System.out.println("h: " + h);
 		double hResult = 7994;
-		System.out.println("hResult: " + hResult);
 		
 		//Testing with the delta as 1
         assertEquals(h, hResult, 1); 
