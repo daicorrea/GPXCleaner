@@ -38,7 +38,7 @@ public class TestReducer {
 		//Reading File
 		ArrayList<Track> trackList = new ArrayList<Track>();
 		String testFileName = "../GPX_Project/src/unirio/pm/gpx/file/foxboroTest.gpx";
-		
+		ArrayList<TrackPoint> trackPointsRead = new ArrayList<TrackPoint>();
   		
 	    //Read GPX File
 		try {
@@ -49,7 +49,6 @@ public class TestReducer {
 		}
 		
 	    //Getting the TrackPoint list read
-		ArrayList<TrackPoint> trackPointsRead = new ArrayList<TrackPoint>();
 	    trackPointsRead = trackList.get(0).getSegments().get(0).getTrackPoints();
 	    
 	    //Creating and adding TrackPoints to a list
@@ -96,36 +95,26 @@ public class TestReducer {
 		}
 	  		
 	    //Reducing the list
-	    trackList = TrackReducer.reduceTrack(trackList, "0.01");
-	    
-	    //Getting the TrackPoint list read
-	    trackPointsRead = trackList.get(0).getSegments().get(0).getTrackPoints();
+	    trackList = TrackReducer.reduceTrack(trackList, "0.1");
 	    
 	    //Creating and adding the expected TrackPoints output to a list
 	    ArrayList<TrackPoint> trackPointlist = new ArrayList<TrackPoint>();
-	    TrackPoint firstTrackPoint = createTrackPoint("44.02248083", "-123.1245669", "261.135252", "2007-02-18T03:34:31Z");	
+	    TrackPoint firstTrackPoint = createTrackPoint("42.050664", "-71.267238", "63.584351", "2002-03-06T04:23:07Z");	
 	    trackPointlist.add(firstTrackPoint);
-	    TrackPoint secTrackPoint = createTrackPoint("44.02280848", "-123.124453", "261.615965", "2007-02-18T03:36:03Z");	
+	    TrackPoint secTrackPoint = createTrackPoint("43.050664", "-72.267238", "64.584351", "2002-03-06T05:20:07Z");	
 	    trackPointlist.add(secTrackPoint);
-	    TrackPoint thirdTrackPoint = createTrackPoint("44.02267361", "-123.1244789", "261.615966", "2007-02-18T03:36:28Z");	
-	    trackPointlist.add(thirdTrackPoint);
-	    
-	    System.out.println("size: "+ trackPointlist.size());
-	    System.out.println("READsize: "+ trackPointsRead.size());
 	    
 	    //Testing the list size
 	    assertEquals(trackPointlist.size(), trackPointsRead.size());
-	    
+	    System.out.println("size: "+ trackPointlist.size());
 	    
 	    //Testing the elements of the lists
 	    for (int i = 0; i < trackPointsRead.size(); i++) {
 		    float elem1 = trackPointlist.get(i).getEle();
-		    System.out.println("ELEM1: "+ elem1);
 		    float elem2 = trackPointsRead.get(i).getEle();
-		    System.out.println("ELEM2: "+ elem2);
 		    
 	        //assuming that both lists are sorted and the delta is 0.0002
-	        assertEquals(elem1, elem2, 0.5); 
+	        assertEquals(elem1, elem2, 0.0002); 
             
         };
 	}
