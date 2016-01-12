@@ -2,7 +2,6 @@ package unirio.pm.gpx.rotine;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
@@ -17,11 +16,7 @@ import unirio.pm.gpx.rotine.TrackPointToTrack;
 
 public class TrackReducer {
 	
-	static public void remover(String[] args) throws IOException, ParserConfigurationException, SAXException{
-		
-		String toReduce = args[0];
-		String sourceFile = args[1];
-		String destinationFile = args[2];
+	static public void remover(String toReduce, String sourceFile, String destinationFile) throws IOException, ParserConfigurationException, SAXException{
 		
 		//Creating object lists
 		ArrayList<Track> trackList = new ArrayList<Track>();
