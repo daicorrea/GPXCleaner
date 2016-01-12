@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<gpx>
+<trk>
+<name>FoxboroTest</name>
+<trkseg>
+<trkpt lat="44.02248083" lon="-123.1245669">
+                <ele>261.135254</ele>
+                <time>2007-02-18T03:34:36Z</time>
+            </trkpt>
+            <trkpt lat="44.02268685" lon="-123.1244315">
+                <ele>261.135254</ele>
+                <time>2007-02-18T03:35:13Z</time>
+            </trkpt>
+            <trkpt lat="44.02270001" lon="-123.1243942">
+                <ele>261.135254</ele>
+                <time>2007-02-18T03:35:36Z</time>
+            </trkpt>
+            <trkpt lat="44.02280848" lon="-123.124453">
+                <ele>261.135254</ele>
+                <time>2007-02-18T03:35:50Z</time>
+            </trkpt>
+            <trkpt lat="44.02269708" lon="-123.1244585">
+                <ele>261.615967</ele>
+                <time>2007-02-18T03:36:03Z</time>
+            </trkpt>
+            <trkpt lat="44.02267361" lon="-123.1244789">
+                <ele>261.615967</ele>
+                <time>2007-02-18T03:36:28Z</time>
+            </trkpt>
+</trkseg>
+</trk>
+</gpx>

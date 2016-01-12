@@ -49,10 +49,11 @@ public class TestFile {
 	    
 	    //Testing the elements of the lists
 	    for (int i=0; i<trackPointsRead.size(); i++) {
-	    	float elem1 = trackPointlist.get(i).getEle();
-	    	float elem2 = trackPointsRead.get(i).getEle();
-            //assuming that both lists are sorted and the delta is 0.0002
-            assertEquals(elem1, elem2, 0.0002); 
+	    float elem1 = trackPointlist.get(i).getEle();
+	    float elem2 = trackPointsRead.get(i).getEle();
+	    
+        //assuming that both lists are sorted and the delta is 0.0002
+        assertEquals(elem1, elem2, 0.0002); 
             
         };
 	}

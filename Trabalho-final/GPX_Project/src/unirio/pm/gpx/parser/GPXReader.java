@@ -46,7 +46,6 @@ public class GPXReader {
 				Node nNodeTrk = nListTrk.item(i);
 				Element elementTrk = (Element) nNodeTrk;
 				String trkName = elementTrk.getElementsByTagName("name").item(i).getTextContent();
-				System.out.println("NAME: " +trkName);
 				
 				//get TrackSegment List
 				NodeList nListTrkseg = doc.getElementsByTagName("trkseg");

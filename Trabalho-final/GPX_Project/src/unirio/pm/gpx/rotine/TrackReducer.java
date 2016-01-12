@@ -16,7 +16,7 @@ import unirio.pm.gpx.rotine.TrackPointToTrack;
 
 public class TrackReducer {
 	
-	static public void remover(String sourceFile, String destinationFile, String toReduce) throws IOException, ParserConfigurationException, SAXException{
+	static public void remover(String toReduce, String sourceFile, String destinationFile) throws IOException, ParserConfigurationException, SAXException{
 		
 		//Creating object lists
 		ArrayList<Track> trackList = new ArrayList<Track>();

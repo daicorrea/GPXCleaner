@@ -1,9 +1,0 @@
-package unirio.pm.gpx.test;
-
-import static org.junit.Assert.*;
-
-public class TestFile {
-	
-	
-
-}

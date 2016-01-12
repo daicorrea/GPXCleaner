@@ -1,0 +1,63 @@
+package unirio.pm.gpx.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import unirio.pm.gpx.calc.DistanceCalculator;
+
+public class TestCalc {
+
+	@Test
+	public void testHaversine() {
+		
+		//Calculating distance between coordinates
+		//According to http://rosettacode.org/wiki/Haversine_formula#Java
+		double h = DistanceCalculator.haversine(36.12, -86.67, 33.94, -118.40);
+		double hResult = 2887.2599506071106;
+		System.out.println("HAQUI: "+h);
+		System.out.println("hResult: "+hResult);
+		
+		//Testing with the delta as 1
+        assertEquals(h, hResult, 1); 
+		
+	}
+	
+	@Test
+	public void TestDistance() {
+		
+		//Getting longitude and latitude 
+		double x1 = -71.281; 
+		double y1 = 42.052;
+		double x2 = -71.279;
+		double y2 = 42.055; 
+		double x3 = -71.266; 
+		double y3 = 42.049; 
+		
+		//Calculating distance between coordinates
+		double h = DistanceCalculator.distanceBetweenPoints(x1, y1, x2, y2, x3, y3);
+		double hResult = 7994;
+		
+		//Testing with the delta as 1
+        assertEquals(h, hResult, 1); 
+		
+	}
+	
+	//Test Slope
+	@Test
+	public void testCalculateSlope() {
+		
+		double a = DistanceCalculator.calculateSlope(10, 2, 6, 4);
+		System.out.println("a: "+a);
+		double result = 4.0;
+		
+		//Testing with the delta as 0.5
+        assertEquals(a, result, 0.5); 
+		
+	}
+	
+	
+	
+	
+
+}
