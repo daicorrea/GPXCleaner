@@ -11,7 +11,9 @@ import unirio.pm.gpx.rotine.VerifyParams;
 
 public class Main {
 	public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
-		
+		/*
+		String[] argsal = {"10%", "../GPX_Project/src/unirio/pm/gpx/file/foxboro.gpx", "../GPX_Project/src/unirio/pm/gpx/file/NewFilefoxboro.gpx"};
+		*/
 		VerifyParams.verify(args);
 		
 		TrackReducer.remover(args);
