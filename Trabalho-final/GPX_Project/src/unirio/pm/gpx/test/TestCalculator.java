@@ -21,26 +21,13 @@ public class TestCalculator {
         assertEquals(h, hResult, 1); 
 		
 	}
-	
-	@Test
-	//Testing the distance between points
-	public void TestDistance() {
-		
-		//Calculating distance between coordinates
-		double h = DistanceCalculator.distanceBetweenPoints(2, 4, 6, 8, 10, 12);
-		double hResult = 626;
-		
-		//Testing with the delta as 1
-        assertEquals(h, hResult, 1.0); 
-		
-	}
-	
+
 	@Test
 	//Testing Slope Function
 	public void testCalculateSlope() {
 		
 		double result = DistanceCalculator.calculateSlope(6, 10, 4, 2);
-		double expectedResult = 4.0;
+		double expectedResult = 0.25;
 		
 		//Testing with the delta as 0.5
         assertEquals(result, expectedResult, 0.5); 
@@ -64,7 +51,7 @@ public class TestCalculator {
 	public void testCalculateOrthogonalSlope() {
 		
 		double result = DistanceCalculator.calculateOrthogonalSlope(2);
-		double expectedResult = 1/2;
+		double expectedResult = -1/2;
 			
 		//Testing with the delta as 0.5
 	    assertEquals(result, expectedResult, 0.5); 
