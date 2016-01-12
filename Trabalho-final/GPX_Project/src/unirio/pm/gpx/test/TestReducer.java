@@ -44,7 +44,6 @@ public class TestReducer {
 		try {
 			trackList = GPXReader.ReadGPX(testFileName);
 		} catch (IOException | ParserConfigurationException | SAXException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -91,7 +90,6 @@ public class TestReducer {
 	    try {
 			trackList = GPXReader.ReadGPX(testInputFileName);
 		} catch (IOException | ParserConfigurationException | SAXException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	  		
@@ -110,9 +108,6 @@ public class TestReducer {
 	    TrackPoint thirdTrackPoint = createTrackPoint("44.02267361", "-123.1244789", "261.615966", "2007-02-18T03:36:28Z");	
 	    trackPointlist.add(thirdTrackPoint);
 	    
-	    System.out.println("size: "+ trackPointlist.size());
-	    System.out.println("READsize: "+ trackPointsRead.size());
-	    
 	    //Testing the list size
 	    assertEquals(trackPointlist.size(), trackPointsRead.size());
 	    
@@ -120,14 +115,21 @@ public class TestReducer {
 	    //Testing the elements of the lists
 	    for (int i = 0; i < trackPointsRead.size(); i++) {
 		    float elem1 = trackPointlist.get(i).getEle();
-		    System.out.println("ELEM1: "+ elem1);
 		    float elem2 = trackPointsRead.get(i).getEle();
-		    System.out.println("ELEM2: "+ elem2);
 		    
 	        //assuming that both lists are sorted and the delta is 0.0002
 	        assertEquals(elem1, elem2, 0.5); 
             
         };
+	}
+	
+	@Test
+	//Verify if point is in the line
+	public void testPointsAtTheLine() {
+		double distance = 0;
+		
+		//Testing
+		assertTrue(TrackPointReducer.pointsAtTheSameLine(distance));
 	}
 	
 	//Creating new TrackPoint

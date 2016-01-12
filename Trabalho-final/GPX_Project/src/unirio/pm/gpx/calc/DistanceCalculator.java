@@ -17,11 +17,9 @@ import unirio.pm.gpx.model.TrackPoint;
 		
 		//Calculating distance between points
 		double d = distanceBetweenPoints(x1, y1, x2, y2, x3, y3);
-		System.out.println("DANTES: "+d);
 		
 		//Passing from KM to meters
 		d = d*1000;
-		System.out.println("DAQUI: "+d);
 		
 		return d;
 		
@@ -92,11 +90,6 @@ import unirio.pm.gpx.model.TrackPoint;
 	//Calculating distance between coordinates
 	static public double haversine(double x1, double y1, double x2, double y2) {
     	
-    	System.out.println("x1: " + x1);
-		System.out.println("x2: " + x2);
-		System.out.println("y1: " + y1);
-		System.out.println("y2: " + y2);
-    	
 		//Getting the Earth's distance in radians
 		double R = 6372.8; 
 		
@@ -111,7 +104,6 @@ import unirio.pm.gpx.model.TrackPoint;
 		//Calculating
 		double a =  (Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(x1) * Math.cos(x2));
 		double c =  (2 * Math.asin(Math.sqrt(a)));
-		System.out.println("ERRE: " + R * c);
 		return R * c;
 		
 	}

@@ -15,7 +15,7 @@ public class Main {
 		String[] argsal = {"10%", "../GPX_Project/src/unirio/pm/gpx/file/foxboro.gpx", "../GPX_Project/src/unirio/pm/gpx/file/NewFilefoxboro.gpx"};
 		VerifyParams.verify(argsal);
 		
-		TrackReducer.remover("0.1", "../GPX_Project/src/unirio/pm/gpx/file/foxboro.gpx", "../GPX_Project/src/unirio/pm/gpx/file/NewFilefoxboro.gpx");
+		TrackReducer.remover("10%", "../GPX_Project/src/unirio/pm/gpx/file/foxboro.gpx", "../GPX_Project/src/unirio/pm/gpx/file/NewFilefoxboro.gpx");
 		
 	}
 }

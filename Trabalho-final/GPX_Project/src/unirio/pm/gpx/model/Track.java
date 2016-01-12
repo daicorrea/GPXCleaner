@@ -57,7 +57,6 @@ public class Track {
 			trackPointTotal = trackPointTotal + segmentTrackPoints;
 		}
 		
-		System.out.println(trackPointTotal);
 		return trackPointTotal;
 		
 	}

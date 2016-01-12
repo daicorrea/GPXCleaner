@@ -29,7 +29,6 @@ public class TestFile {
 	    try {
 			trackList = GPXReader.ReadGPX(testFileName);
 		} catch (IOException | ParserConfigurationException | SAXException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    
@@ -45,7 +44,6 @@ public class TestFile {
 	    
 	    //Testing the list size
 	    assertEquals(trackPointlist.size(), trackPointsRead.size());
-	    System.out.println("size: "+ trackPointlist.size());
 	    
 	    //Testing the elements of the lists
 	    for (int i = 0; i < trackPointsRead.size(); i++) {

@@ -4,13 +4,13 @@ public class VerifyParams {
 
 	static public void verify(String[] args) {
 		
-		//Verify if the params are null
+		//Verify if the parameters are null
 		if(paramsAreNull(args)) {
 			System.out.println("No parameters identified. Please, review your command and try again later.");
 			System.exit(0);
 		}
 		
-		//Verify if there are three params
+		//Verify if there are three parameters
 		if(!areThree(args)) {
 			System.out.println("For this program it's necessary to have three parameters. Please, review your command and try again later.");
 			System.exit(0);
@@ -64,7 +64,5 @@ public class VerifyParams {
 			return true;
 		}
 	}
-
-	
 
 }
