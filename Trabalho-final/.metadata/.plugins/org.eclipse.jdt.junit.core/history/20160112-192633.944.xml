@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="TestCalculator" project="GPX_Project" tests="4" started="4" failures="0" errors="0" ignored="0">
-  <testsuite name="unirio.pm.gpx.test.TestCalculator" time="0.0">
-    <testcase name="testHaversine" classname="unirio.pm.gpx.test.TestCalculator" time="0.0"/>
-    <testcase name="testCalculateOrthogonalSlope" classname="unirio.pm.gpx.test.TestCalculator" time="0.0"/>
-    <testcase name="testCalculateYIntercept" classname="unirio.pm.gpx.test.TestCalculator" time="0.0"/>
-    <testcase name="testCalculateSlope" classname="unirio.pm.gpx.test.TestCalculator" time="0.0"/>
-  </testsuite>
-</testrun>
