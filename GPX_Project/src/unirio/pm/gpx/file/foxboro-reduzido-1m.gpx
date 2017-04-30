@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpx 
+	creator="Daiane Correa, Felipe Guedes, Cesar"
+	version="1.1" xmlns="http://www.topografix.com/GPX/1/1"
+	xmlns:geocache="http://www.groundspeak.com/cache/1/0"
+	xmlns:gpxdata="http://www.cluetrust.com/XML/GPXDATA/1/0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd
+	http://www.cluetrust.com/XML/GPXDATA/1/0 http://www.cluetrust.com/Schemas/gpxdata10.xsd">
+	<trk>
+		<name>Foxboro</name>
+		<trkseg>
+			<trkpt lat="42.049786" lon="-71.26599">
+				<ele>47.24182</ele>
+				<time>2002-03-06T04:19:57Z</time>
+			</trkpt>
+			<trkpt lat="42.055042" lon="-71.26548">
+				<ele>101.5564</ele>
+				<time>2002-03-06T04:25:47Z</time>
+			</trkpt>
+			<trkpt lat="42.056973" lon="-71.27473">
+				<ele>108.766235</ele>
+				<time>2002-03-06T04:39:47Z</time>
+			</trkpt>
+			<trkpt lat="42.06444" lon="-71.27756">
+				<ele>111.169556</ele>
+				<time>2002-03-06T04:47:17Z</time>
+			</trkpt>
+			<trkpt lat="42.065643" lon="-71.277664">
+				<ele>109.72766</ele>
+				<time>2002-03-06T04:48:07Z</time>
+			</trkpt>
+			<trkpt lat="42.070126" lon="-71.28162">
+				<ele>110.20825</ele>
+				<time>2002-03-06T04:57:47Z</time>
+			</trkpt>
+			<trkpt lat="42.068775" lon="-71.28305">
+				<ele>109.72766</ele>
+				<time>2002-03-06T04:59:37Z</time>
+			</trkpt>
+			<trkpt lat="42.065662" lon="-71.28421">
+				<ele>110.68884</ele>
+				<time>2002-03-06T05:02:22Z</time>
+			</trkpt>
+			<trkpt lat="42.064117" lon="-71.28194">
+				<ele>113.573</ele>
+				<time>2002-03-06T05:04:02Z</time>
+			</trkpt>
+			<trkpt lat="42.062637" lon="-71.28127">
+				<ele>118.86011</ele>
+				<time>2002-03-06T05:09:02Z</time>
+			</trkpt>
+			<trkpt lat="42.06339" lon="-71.28299">
+				<ele>140.00916</ele>
+				<time>2002-03-06T05:17:42Z</time>
+			</trkpt>
+			<trkpt lat="42.063366" lon="-71.28537">
+				<ele>134.72192</ele>
+				<time>2002-03-06T05:21:12Z</time>
+			</trkpt>
+			<trkpt lat="42.06708" lon="-71.287">
+				<ele>125.589355</ele>
+				<time>2002-03-06T05:39:23Z</time>
+			</trkpt>
+			<trkpt lat="42.06562" lon="-71.28893">
+				<ele>126.06995</ele>
+				<time>2002-03-06T05:47:53Z</time>
+			</trkpt>
+			<trkpt lat="42.064568" lon="-71.29024">
+				<ele>130.87671</ele>
+				<time>2002-03-06T06:06:18Z</time>
+			</trkpt>
+			<trkpt lat="42.052143" lon="-71.28863">
+				<ele>107.32434</ele>
+				<time>2002-03-06T07:09:43Z</time>
+			</trkpt>
+			<trkpt lat="42.051544" lon="-71.285286">
+				<ele>104.44043</ele>
+				<time>2002-03-06T07:13:53Z</time>
+			</trkpt>
+			<trkpt lat="42.052723" lon="-71.281334">
+				<ele>105.40173</ele>
+				<time>2002-03-06T07:26:53Z</time>
+			</trkpt>
+			<trkpt lat="42.05326" lon="-71.2776">
+				<ele>105.88245</ele>
+				<time>2002-03-06T07:35:13Z</time>
+			</trkpt>
+			<trkpt lat="42.052616" lon="-71.27578">
+				<ele>105.88245</ele>
+				<time>2002-03-06T07:35:43Z</time>
+			</trkpt>
+			<trkpt lat="42.05163" lon="-71.2732">
+				<ele>103.95972</ele>
+				<time>2002-03-06T07:39:03Z</time>
+			</trkpt>
+			<trkpt lat="42.051136" lon="-71.270905">
+				<ele>104.44043</ele>
+				<time>2002-03-06T07:39:53Z</time>
+			</trkpt>
+			<trkpt lat="42.050728" lon="-71.267624">
+				<ele>105.40173</ele>
+				<time>2002-03-06T07:41:53Z</time>
+			</trkpt>
+			<trkpt lat="42.049805" lon="-71.26623">
+				<ele>94.34656</ele>
+				<time>2002-03-06T07:43:53Z</time>
+			</trkpt>
+		</trkseg>
+	</trk>
+</gpx>
